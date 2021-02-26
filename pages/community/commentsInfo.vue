@@ -28,6 +28,10 @@
 </script>
 
 <style lang="scss" scoped>
+	page {
+		padding:10px 20px;
+		box-sizing: border-box;
+	}
 	.empty {
 		width: 100%;
 		height: 100rpx;

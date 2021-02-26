@@ -167,3 +167,14 @@ image {
 .margin-r-10 {
 	margin-right: 10px;
 }
+
+.ng-theme-color {
+  color: $themeColor;
+}
+.ng-base-color {
+  color: $baseFontColor;
+}
+
+.ng-bg-theme-color {
+  background: $themeColor;
+}
