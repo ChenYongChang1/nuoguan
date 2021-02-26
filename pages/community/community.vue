@@ -8,13 +8,16 @@
       @toggle="hanlderChange"
     ></filter-tab>
     <community-list></community-list>
+    <view class="add-article ng-flex ng-flex-center ng-align-center">
+      <image src="/static/imgs/community/add.svg" mode="scaleToFill" />
+    </view>
   </view>
 </template>
 
 <script>
 import FilterCommunity from "ngcomponents/page/community/FilterCommunity";
 import FilterTab from "ngcomponents/page/community/FilterTab";
-import CommunityList from 'ngcomponents/page/community/CommunityList'
+import CommunityList from "ngcomponents/page/community/CommunityList";
 export default {
   components: { FilterCommunity, FilterTab, CommunityList },
   data() {
@@ -35,5 +38,22 @@ export default {
 <style lang="scss" scoped>
 .community {
   width: 100%;
+  .add-article {
+    position: fixed;
+    width: 80rpx;
+    height: 80rpx;
+    transform: rotate(45deg);
+    bottom: 180rpx;
+    right: 70rpx;
+    background: $themeColor;
+    border-radius: 10rpx;
+    box-shadow: 0 0 12px 0 themeColor(0.32);
+    > image {
+      width: 60rpx;
+      height: 60rpx;
+      transform: rotate(-45deg);
+      display: block;
+    }
+  }
 }
 </style>

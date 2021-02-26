@@ -67,8 +67,8 @@ export default {
   }
   /deep/ .uni-swiper-dot {
     width: 16rpx;
-    height: 4rpx;
-    border-radius: 4rpx;
+    height: 6rpx;
+    border-radius: 6rpx;
   }
   /deep/ .uni-swiper-dot-active {
     width: 32rpx;

@@ -16,4 +16,5 @@ export default {
 @import "./common/uni.css";
 @import "./common/common.scss";
 @import "./common/_mixins.scss";
+@import "./common/_function.scss";
 </style>
