@@ -23,8 +23,18 @@
       "style": {
         "navigationBarTitleText": "个人中心"
       }
-    }
-  ],
+    },
+	{
+		"path" : "pages/community/commentsInfo",
+		"style" :                                                                                    
+		{
+			"navigationBarTitleText": "论坛 BBS",
+			"backgroundColorTop":"#000000",
+			"enablePullDownRefresh": false
+		}
+		
+	}
+],
   "globalStyle": {
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "uni-app",
