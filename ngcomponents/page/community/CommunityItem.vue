@@ -1,5 +1,5 @@
 <template>
-  <navigator url="/pages/community/community">
+  <navigator :url="articleUrl">
     <view class="community-row">
       <view class="community-title ng-flex ng-flex-space ng-align-start">
         <view class="title">{{ article.title }}</view>
@@ -41,6 +41,7 @@ export default {
   data() {
     return {
       article: {
+        id: 11,
         title: "你好啊这是一级标题你好啊",
         desc:
           "你好啊这是一级标题你好啊这是一级标题你好啊这是一级标题你好啊这是一级标题你好啊这是一级标题你好啊这是一级标题",
@@ -49,6 +50,11 @@ export default {
         isLike: false,
       },
     };
+  },
+  computed: {
+    articleUrl() {
+      return `/pages/community/commentsInfo?id=${this.article.id}`;
+    },
   },
   methods: {
     likeArticle() {
@@ -63,6 +69,7 @@ export default {
   width: 100%;
   padding: 40rpx 24rpx;
   border-bottom: solid 1px $lineColor;
+  box-sizing: border-box;
   .community-title {
     width: 100%;
     margin-bottom: 30rpx;
