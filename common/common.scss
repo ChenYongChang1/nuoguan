@@ -1,0 +1,149 @@
+* {
+  box-sizing: border-box;
+}
+// body {
+//   background: rgb(240, 240, 240);
+// }
+uni-navigator {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+navigator {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+input {
+  display: block;
+  border: none;
+  &:focus {
+    outline: none;
+  }
+}
+.uni-input-input {
+  background: rgba($color: #000000, $alpha: 0);
+}
+
+image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.ng-flex {
+  display: flex;
+}
+
+.ng-flex-start {
+  justify-content: flex-start;
+}
+
+.ng-flex-center {
+  justify-content: center;
+}
+
+.ng-flex-end {
+  justify-content: flex-end;
+}
+
+.ng-flex-space {
+  justify-content: space-between;
+}
+.ng-flex-around {
+  justify-content: space-around;
+}
+
+.ng-align-center {
+  align-items: center;
+}
+
+.ng-align-start {
+  align-items: flex-start;
+}
+
+.ng-align-end {
+  align-items: end;
+}
+
+.ng-flex-row-reverse {
+  flex-direction: row-reverse;
+}
+
+.ng-flex-column {
+  flex-direction: column;
+}
+
+.ng-flex-column-reverse {
+  flex-direction: column-reverse;
+}
+
+.ng-flex-warp {
+  flex-wrap: wrap;
+}
+
+.ng-flex-1 {
+  flex: 1;
+}
+
+.ng-flex-2 {
+  flex: 2;
+}
+
+.ng-flex-3 {
+  flex: 3;
+}
+
+.ng-flex-4 {
+  flex: 4;
+}
+
+.ng-margin-auto {
+  margin: auto;
+}
+.ng-text-center {
+  text-align: center;
+}
+
+.ng-text-right {
+  text-align: right;
+}
+
+.ng-text-left {
+  text-align: left;
+}
+
+.font-10 {
+  -webkit-transform: scale(0.83, 0.83);
+  font-size: 12px;
+  transform: scale(0.83, 0.83);
+  display: inline-block;
+}
+
+.font-12 {
+  font-size: 12px;
+}
+
+.font-13 {
+  font-size: 13px;
+}
+
+.font-14 {
+  font-size: 14px;
+}
+
+.font-15 {
+  font-size: 15px;
+}
+
+.font-16 {
+  font-size: 16px;
+}
+
+.font-18 {
+  font-size: 18px;
+}
+
+.weight-550 {
+  font-weight: 550;
+}
