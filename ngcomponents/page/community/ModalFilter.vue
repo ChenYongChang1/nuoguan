@@ -2,7 +2,7 @@
   <view class="modal-filter">
     <view
       v-for="(item, index) in filterList"
-      :key="$strJoin('modal-filter', index)"
+      :key="index"
       class="modal-filter-item"
     >
       <view class="modal-filter-title ng-flex ng-flex-space">
@@ -17,7 +17,7 @@
       <view class="modal-filter-btn ng-flex">
         <view
           v-for="(btnItem, btnIndex) in item.btns"
-          :key="$strJoin('modal-btn-', btnIndex)"
+          :key="btnIndex"
           class="modal-btn-item"
           :class="{
             active:
@@ -35,7 +35,7 @@
 export default {
   props: {
     defaultVal: {
-      type: Object,
+      type: Array,
       default: () => [],
     },
     filterType: {

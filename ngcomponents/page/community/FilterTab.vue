@@ -3,8 +3,8 @@
     <view
       class="btn-item ng-text-center font-14 weight-550"
       :class="{ active: item.value === defaultVal }"
-      v-for="item in filterBtn"
-      :key="$strJoin('btn-', item.value)"
+      v-for="(item, index) in filterBtn"
+      :key="index"
       @tap="toggle(item)"
     >
       {{ item.name }}

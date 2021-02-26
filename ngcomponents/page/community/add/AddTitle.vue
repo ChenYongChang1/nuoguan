@@ -1,16 +1,16 @@
 <template>
   <view class="add-tag" :style="{ margin }">
-    <add-modules :title="'添加' + filterName">
+    <add-modules :title="comfilterName">
       <view class="textarea-box">
         <textarea
           v-model="word"
           :maxlength="maxNum"
           class="font-12"
-          :placeholder="$strJoin('请添加', filterName)"
+          :placeholder="comfilterName"
         ></textarea>
         <view class="remain-text font-12"
           >你还可以输入
-          <text>{{ maxNum - (word || "").length }}</text>
+          <text>{{ canInputNum }}</text>
           个字</view
         >
       </view>
@@ -44,6 +44,14 @@ export default {
     return {
       word: "",
     };
+  },
+  computed: {
+    comfilterName() {
+      return "添加" + this.filterName;
+    },
+    canInputNum() {
+      return this.maxNum - (this.word || "").length;
+    },
   },
   methods: {},
 };
