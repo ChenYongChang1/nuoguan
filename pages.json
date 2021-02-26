@@ -13,6 +13,12 @@
       }
     },
     {
+      "path": "pages/community/addArticle",
+      "style": {
+        "navigationBarTitleText": "写文章"
+      }
+    },
+    {
       "path": "pages/user/usercenter",
       "style": {
         "navigationBarTitleText": "个人中心"

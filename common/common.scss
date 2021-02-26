@@ -14,12 +14,17 @@ navigator {
   height: 100%;
   display: block;
 }
-input {
+input,
+textarea {
   display: block;
   border: none;
   &:focus {
     outline: none;
   }
+}
+textarea {
+  width: 100%;
+  height: 100%;
 }
 .uni-input-input {
   background: rgba($color: #000000, $alpha: 0);
@@ -177,4 +182,7 @@ image {
 
 .ng-bg-theme-color {
   background: $themeColor;
+}
+.color-white {
+  color: white;
 }
