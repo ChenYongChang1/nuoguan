@@ -26,7 +26,11 @@
     </view>
     <ng-popup :show-modal="showRightFilter" @close="close">
       <view class="filter-box">
-          <modal-filter></modal-filter>
+        <modal-filter
+          filter-type="filter"
+          :default-val="filterData.filter"
+          @toggle="hanlderChange"
+        ></modal-filter>
       </view>
     </ng-popup>
   </view>
@@ -34,7 +38,7 @@
 
 <script>
 import NgPopup from "ngcomponents/base/NgPopup";
-import ModalFilter from 'ngcomponents/page/community/ModalFilter'
+import ModalFilter from "ngcomponents/page/community/ModalFilter";
 export default {
   components: { NgPopup, ModalFilter },
   data() {
@@ -42,10 +46,15 @@ export default {
       showRightFilter: false,
       filterData: {
         word: "",
+        filter: [0, 0],
       },
     };
   },
   methods: {
+    hanlderChange({ type, value }) {
+      this.filterData[type] = value;
+      this.close()
+    },
     close() {
       this.showRightFilter = false;
     },
