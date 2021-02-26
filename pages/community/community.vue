@@ -8,9 +8,11 @@
       @toggle="hanlderChange"
     ></filter-tab>
     <community-list></community-list>
-    <view class="add-article ng-flex ng-flex-center ng-align-center">
-      <image src="/static/imgs/community/add.svg" mode="scaleToFill" />
-    </view>
+    <navigator url="/pages/community/addArticle" open-type="navigate" hover-class="navigator-hover">
+      <view class="add-article ng-flex ng-flex-center ng-align-center">
+        <image src="/static/imgs/community/add.svg" mode="scaleToFill" />
+      </view>
+    </navigator>
   </view>
 </template>
 
