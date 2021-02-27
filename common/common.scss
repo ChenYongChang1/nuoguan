@@ -14,6 +14,9 @@ navigator {
   height: 100%;
   display: block;
 }
+uni-view:focus {
+  outline: none;
+}
 input,
 textarea {
   display: block;
@@ -118,10 +121,10 @@ image {
   text-align: left;
 }
 .font-8 {
-	-webkit-transform: scale(0.67, 0.67);
-	font-size: 12px;
-	transform: scale(0.67, 0.67);
-	display: inline-block;
+  -webkit-transform: scale(0.67, 0.67);
+  font-size: 12px;
+  transform: scale(0.67, 0.67);
+  display: inline-block;
 }
 .font-10 {
   -webkit-transform: scale(0.83, 0.83);
@@ -158,19 +161,19 @@ image {
   font-weight: 550;
 }
 .margin-l-6 {
-	margin-left: 6px;
+  margin-left: 6px;
 }
 .margin-l-8 {
-	margin-left: 8px;
+  margin-left: 8px;
 }
 .margin-l-28 {
-	margin-left: 28px;
+  margin-left: 28px;
 }
 .margin-t-6 {
-	margin-top: 6px;
+  margin-top: 6px;
 }
 .margin-r-10 {
-	margin-right: 10px;
+  margin-right: 10px;
 }
 
 .ng-theme-color {
