@@ -24,6 +24,18 @@
         "navigationBarTitleText": "个人中心"
       }
     },
+    {
+      "path": "pages/infomation/infomation",
+      "style": {
+        "navigationBarTitleText": "资讯NEWS"
+      }
+    },
+    {
+      "path": "pages/infomation/infoDetail",
+      "style": {
+        "navigationBarTitleText": "德力西电气"
+      }
+    },
 	{
 		"path" : "pages/community/commentsInfo",
 		"style" :                                                                                    

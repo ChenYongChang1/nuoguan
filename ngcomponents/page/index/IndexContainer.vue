@@ -1,7 +1,9 @@
 <template>
   <view class="knoledge-box ng-flex">
     <view class="knoledge">
-      <image src="/static/imgs/1@2x.png" mode="scaleToFill" />
+      <navigator url="/pages/infomation/infomation">
+        <image src="/static/imgs/1@2x.png" mode="scaleToFill" />
+      </navigator>
     </view>
     <view class="goods-box">
       <view class="community">

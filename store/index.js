@@ -1,9 +1,12 @@
 import Vue from "vue";
 import Vuex from "vuex";
-
+import infomation from "./infomation";
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
+  modules: {
+    infomation,
+  },
   state: {
     nowPage: "index",
   },
