@@ -4,6 +4,7 @@
       <view
         class="content"
         :class="{ [direction]: true, [activeClass]: show }"
+        :style="setActivePosition"
         @tap.stop=""
       >
         <slot v-if="show"></slot>
@@ -28,6 +29,14 @@ export default {
       type: Boolean,
       default: true,
     },
+    positon: { // 现在的位置
+      type: Object,
+      default: () => ({}),
+    },
+    activePositon: { // 激活的位置
+      type: Object,
+      default: () => ({}),
+    },
   },
   data() {
     return {
@@ -36,6 +45,9 @@ export default {
     };
   },
   computed: {
+    setActivePosition() {
+      return this.show ? this.activePositon : this.positon;
+    },
     activeClass() {
       return this.$strJoin(this.direction, "-active");
     },
@@ -74,7 +86,7 @@ export default {
   width: 100%;
   height: 100%;
   position: fixed;
-  background: rgba($color: #000000, $alpha: 0.3);
+  background: rgba($color: #000000, $alpha: 0.63);
   z-index: 333;
   top: 0;
   left: 0;

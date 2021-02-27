@@ -51,7 +51,7 @@ export default {
   height: 74rpx;
   margin: 16rpx 0 0 0;
   overflow-x: auto;
-  border-bottom: solid 2rpx rgba(200, 0, 47, 0.49);
+  border-bottom: solid 2rpx $themeLineColor;
   padding-left: 40rpx;
   .btn-item {
     height: 100%;

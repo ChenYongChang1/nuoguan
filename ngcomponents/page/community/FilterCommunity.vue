@@ -1,5 +1,9 @@
 <template>
   <view class="com-filter ng-flex ng-flex-space">
+    <view class="remain-rules ng-text-center" @tap="showModal = true">
+      <image src="/static/imgs/comment/wenhao.png" mode="scaleToFill" />
+      <text class="font-10">规则</text>
+    </view>
     <view class="input-filter">
       <image
         class="big"
@@ -14,49 +18,36 @@
       />
     </view>
     <view
-      class="all-filter ng-text-center ng-flex ng-flex-space ng-align-center ng-flex-column"
-      @tap="showRightFilter = true"
+      v-if="showModal"
+      class="mask ng-flex ng-flex-center ng-align-center"
+      @tap="showModal = false"
+      @touchmove.stop.prevent="clear"
     >
-      <image
-        src="/static/imgs/community/filter.svg"
-        class="icon-image ng-margin-auto"
-        mode="scaleToFill"
-      />
-      <text class="font-12">筛选</text>
+      <rule @close="showModal = false"></rule>
     </view>
-    <ng-popup :show-modal="showRightFilter" @close="close">
-      <view class="filter-box">
-        <modal-filter
-          filter-type="filter"
-          :default-val="filterData.filter"
-          @toggle="hanlderChange"
-        ></modal-filter>
-      </view>
-    </ng-popup>
   </view>
 </template>
 
 <script>
-import NgPopup from "ngcomponents/base/NgPopup";
-import ModalFilter from "ngcomponents/page/community/ModalFilter";
+import uniPopup from "components/uni-popup/uni-popup";
+import Rule from "ngcomponents/page/community/list/Rule";
 export default {
-  components: { NgPopup, ModalFilter },
+  components: { uniPopup, Rule },
   data() {
     return {
-      showRightFilter: false,
+      showModal: false,
       filterData: {
         word: "",
-        filter: [0, 0],
       },
     };
   },
   methods: {
+    clear(e) {
+      // TODO nvue 取消冒泡
+      e.stopPropagation();
+    },
     hanlderChange({ type, value }) {
       this.filterData[type] = value;
-      this.close()
-    },
-    close() {
-      this.showRightFilter = false;
     },
   },
 };
@@ -67,28 +58,66 @@ export default {
   width: 30rpx;
   height: 30rpx;
 }
+.mask {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: $maskColor;
+  z-index: 9;
+}
 .com-filter {
   width: 100%;
-  height: 80rpx;
-  padding: 5rpx 10rpx;
+  height: 200rpx;
+  background: url("/static/imgs/comment/banner.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  .remain-rules {
+    position: absolute;
+    right: 24rpx;
+    top: 12rpx;
+    width: 50rpx;
+    height: 80rpx;
+    line-height: 20rpx;
+    > image {
+      width: 40rpx;
+      height: 40rpx;
+      margin: auto;
+    }
+    > text {
+      width: 100%;
+      height: 22rpx;
+      font-weight: 400;
+      color: #ffffff;
+    }
+  }
+  // padding: 5rpx 10rpx;
   .input-filter {
     position: relative;
     border-radius: 8rpx;
-    width: calc(100% - 100rpx);
+    width: 630rpx;
+    height: 64rpx;
+    margin: 92rpx auto 0 auto;
+    border-radius: 32rpx;
+    background: url("/static/imgs/infomation/input.png");
+    background-size: cover;
+    background-repeat: no-repeat;
     .big {
       position: absolute;
       top: 50%;
-      left: 10rpx;
+      left: 24rpx;
       transform: translateY(-50%);
       width: 40rpx;
       height: 40rpx;
     }
     .search-input {
       display: block;
-      width: 100%;
+      width: 500rpx;
       height: 100%;
-      background: $moduleBg;
-      padding: 0 10rpx 0 60rpx;
+      // background: $moduleBg;
+      padding: 0 10rpx 0 75rpx;
     }
   }
   .all-filter {

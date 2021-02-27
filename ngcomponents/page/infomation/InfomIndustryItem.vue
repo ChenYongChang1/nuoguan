@@ -163,7 +163,7 @@ export default {
       left: 0;
       width: 100%;
       height: 100%;
-      background: $maskColor;
+      background: $maskPlayColor;
       border-radius: 8rpx;
       > image {
         width: 88rpx;

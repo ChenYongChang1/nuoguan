@@ -4,6 +4,9 @@ view {
 // body {
 //   background: rgb(240, 240, 240);
 // }
+.box-shadow {
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+}
 uni-navigator {
   width: 100%;
   height: 100%;
@@ -212,4 +215,15 @@ image {
   text-overflow: ellipsis;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
+}
+
+.topic-title {
+  width: 100%;
+  height: 40rpx;
+  font-size: 28rpx;
+  font-weight: 400;
+  color: #666666;
+  line-height: 40rpx;
+  padding-left: 20rpx;
+  border-left: 4rpx solid $themeColor;
 }

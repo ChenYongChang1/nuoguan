@@ -1,20 +1,17 @@
 <template>
   <view>
-    <community-item
-      v-for="(item, index) in list"
-      :key="$strJoin('community-', index)"
-    ></community-item>
+    <topic-list margin="0 32rpx 0 0"></topic-list>
+    <gold-wheat></gold-wheat>
   </view>
 </template>
 
 <script>
-import CommunityItem from "ngcomponents/page/community/CommunityItem";
+import TopicList from "ngcomponents/page/community/list/TopicList";
+import GoldWheat from "ngcomponents/page/community/list/GoldWheat";
 export default {
-  components: { CommunityItem },
+  components: { TopicList, GoldWheat },
   data() {
-    return {
-      list: [1, 2, 3, 4],
-    };
+    return {};
   },
 };
 </script>

@@ -1,18 +1,23 @@
 <template>
   <view class="community">
-    <wx-swiper></wx-swiper>
+    <!-- <wx-swiper></wx-swiper> -->
     <filter-community></filter-community>
-    <filter-tab
+    <!-- <filter-tab
       filter-type="tab"
       :default-val="filterData.tab"
       @toggle="hanlderChange"
-    ></filter-tab>
+    ></filter-tab> -->
     <community-list></community-list>
-    <navigator url="/pages/community/addArticle" open-type="navigate" hover-class="navigator-hover">
+    <navigator
+      url="/pages/community/addArticle"
+      open-type="navigate"
+      hover-class="navigator-hover"
+    >
       <view class="add-article ng-flex ng-flex-center ng-align-center">
-        <image src="/static/imgs/community/add.svg" mode="scaleToFill" />
+        <image src="/static/imgs/comment/add.png" mode="scaleToFill" />
       </view>
     </navigator>
+    <!-- <tab-bar></tab-bar> -->
   </view>
 </template>
 
@@ -25,7 +30,8 @@ export default {
   data() {
     return {
       filterData: {
-        tab: 1,
+        user: '',
+        word: ''
       },
     };
   },
@@ -40,22 +46,13 @@ export default {
 <style lang="scss" scoped>
 .community {
   width: 100%;
+  background: $bodyBg;
   .add-article {
     position: fixed;
-    width: 80rpx;
-    height: 80rpx;
-    transform: rotate(45deg);
+    width: 100rpx;
+    height: 100rpx;
     bottom: 180rpx;
     right: 70rpx;
-    background: $themeColor;
-    border-radius: 10rpx;
-    box-shadow: 0 0 12px 0 themeColor(0.32);
-    > image {
-      width: 60rpx;
-      height: 60rpx;
-      transform: rotate(-45deg);
-      display: block;
-    }
   }
 }
 </style>
