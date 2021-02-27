@@ -33,6 +33,7 @@
     <view class="community-article" :class="showUserCard">
       <community-item
         v-for="(item, index) in list"
+        :user-id="filterData.user"
         :key="$strJoin('community-', index)"
       ></community-item>
     </view>

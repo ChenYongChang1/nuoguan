@@ -1,7 +1,7 @@
 <template>
   <navigator :url="articleUrl">
     <view class="community-row box-shadow">
-      <view class="community-user ng-flex">
+      <view v-if="!userId" class="community-user ng-flex">
         <view class="user-cover">
           <image
             src="https://www.w3school.com.cn/i/eg_tulip.jpg"
@@ -42,43 +42,18 @@
           <text>13</text>
         </view>
       </view>
-      <!-- <view class="community-title ng-flex ng-flex-space ng-align-start">
-        <view class="title">{{ article.title }}</view>
-        <view class="tag font-12">电工</view>
-      </view>
-      <view class="community-desc ng-flex ng-flex-space">
-        <view class="desc">{{ article.desc }}</view>
-        <view class="desc-img">
-          <image :src="article.descImg" mode="scaleToFill" />
-        </view>
-      </view>
-      <view class="comment ng-flex ng-flex-start ng-align-center" @tap.stop="">
-        <view class="like ng-flex ng-align-center" @tap="likeArticle()">
-          <image
-            :src="
-              $strJoin(
-                `/static/imgs/community/`,
-                `${article.isLike ? 'like-active' : 'like'}.svg`
-              )
-            "
-            mode="scaleToFill"
-          />
-          19
-        </view>
-        <view class="like comment-num ng-flex ng-align-center">
-          <image src="/static/imgs/community/comment.svg" mode="scaleToFill" />
-          19
-        </view>
-        <view class="like time ng-flex ng-align-center">
-          {{ $formatLocalTime(article.timestemp) }}
-        </view>
-      </view> -->
     </view>
   </navigator>
 </template>
 
 <script>
 export default {
+  props: {
+    userId: {
+      type: Number,
+      default: 0,
+    },
+  },
   data() {
     return {
       article: {
