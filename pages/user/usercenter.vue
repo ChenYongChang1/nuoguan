@@ -9,11 +9,22 @@
           </view>
           <view class="cover">
             <image
-              src="https://www.w3school.com.cn/i/eg_tulip.jpg"
+              v-if="userInfo.avatarUrl"
+              :src="userInfo.avatarUrl"
               mode="scaleToFill"
             />
+            <button
+              v-else
+              class="login-btn"
+              form-type="submit"
+              open-type="getUserInfo"
+              bindgetuserinfo="getUserInfo"
+              @getuserinfo="getuserinfo"
+            ></button>
           </view>
-          <view class="cover-name ng-text-center">快乐的美羊羊</view>
+          <view class="cover-name ng-text-center">{{
+            userInfo.nickName || "请先登陆"
+          }}</view>
           <view class="line"></view>
           <view class="info-message ng-flex">
             <view class="level">
@@ -80,7 +91,44 @@ export default {
       ],
     };
   },
-  methods: {},
+  computed: {
+    userInfo() {
+      return this.$store.state.userInfo;
+    },
+  },
+  methods: {
+    getuserinfo() {
+      const _this = this;
+      // wx登录
+      wx.login({
+        success(res) {
+          console.log(res);
+          if (res.code) {
+            //发起网络请求
+            var code = res.code;
+            // 获取微信用户信息
+            wx.getUserInfo({
+              success: function (res) {
+                const userInfo = res.userInfo;
+                _this.$store.commit("SET_USER_MESSAGE", userInfo);
+                console.log(userInfo);
+                // var nickName = userInfo.nickName;
+                // var avatarUrl = userInfo.avatarUrl;
+                // var gender = userInfo.gender; //性别 0：未知、1：男、2：女
+                // var province = userInfo.province;
+                // var city = userInfo.city;
+                // var country = userInfo.country;
+              },
+              fail: (res) => {
+                // 获取失败的去引导用户授权
+              },
+            });
+          } else {
+          }
+        },
+      });
+    },
+  },
 };
 </script>
 
@@ -124,6 +172,15 @@ export default {
         border-radius: 50%;
         background: rgba($color: #fff, $alpha: 0.5);
         margin: 0 auto 20rpx auto;
+        position: relative;
+        .login-btn {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          opacity: 0;
+        }
         > image {
           width: 100%;
           height: 100%;

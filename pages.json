@@ -44,7 +44,24 @@
 			"backgroundColorTop":"#000000",
 			"enablePullDownRefresh": false
 		}
-		
+	},
+  {
+		"path" : "pages/game/game",
+		"style" :                                                                                    
+		{
+			"navigationBarTitleText": "玩游戏",
+			"backgroundColorTop":"#000000",
+			"enablePullDownRefresh": false
+		}
+	},
+  {
+		"path" : "pages/game/gameInfo",
+		"style" :                                                                                    
+		{
+			"navigationBarTitleText": "玩游戏",
+			"backgroundColorTop":"#000000",
+			"enablePullDownRefresh": false
+		}
 	}
 ],
   "globalStyle": {

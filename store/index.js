@@ -8,9 +8,13 @@ const store = new Vuex.Store({
     infomation,
   },
   state: {
+    userInfo: {},
     nowPage: "index",
   },
   mutations: {
+    SET_USER_MESSAGE(state, user) {
+      state.userInfo = user;
+    },
     SET_NOW_PAGE(state, path) {
       state.nowPage = path;
     },
