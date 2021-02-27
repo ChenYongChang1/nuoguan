@@ -1,27 +1,27 @@
 <template>
   <view class="infomation">
     <filter-infomation></filter-infomation>
-    <wx-swiper></wx-swiper>
-    <filter-tab
+    <!-- <wx-swiper></wx-swiper> -->
+    <filter-tab-info
       filter-type="tab"
       :default-val="filterData.tab"
       :filter-btn="filterBtn"
       @toggle="hanlderChange"
-    ></filter-tab>
+    ></filter-tab-info>
     <infomation-list
       :infomation-list="infomationList"
       :filter-name="filterName.name"
+      :filter-data="filterData"
     ></infomation-list>
   </view>
 </template>
 
 <script>
 import FilterInfomation from "ngcomponents/page/infomation/FilterInfomation";
-import FilterTab from "ngcomponents/page/infomation/FilterTab";
+import FilterTabInfo from "ngcomponents/page/infomation/FilterTabInfo";
 import InfomationList from "ngcomponents/page/infomation/InfomationList";
-import { mapActions } from "vuex";
 export default {
-  components: { FilterInfomation, FilterTab, InfomationList },
+  components: { FilterInfomation, FilterTabInfo, InfomationList },
   data() {
     return {
       filterData: {
@@ -32,27 +32,19 @@ export default {
       filterBtn: [
         {
           value: 0,
-          src: "/static/imgs/news/new.svg",
-          activeSrc: "/static/imgs/news/new-active.svg",
           name: "新品速递",
         },
         {
           value: 1,
-          src: "/static/imgs/news/hangye.svg",
-          activeSrc: "/static/imgs/news/hangye-active.svg",
           name: "行业快讯",
         },
         {
           value: 2,
-          src: "/static/imgs/news/xinwen.svg",
-          activeSrc: "/static/imgs/news/xinwen-active.svg",
           name: "新闻播报",
         },
         {
           value: 3,
-          src: "/static/imgs/news/linedown.svg",
-          activeSrc: "/static/imgs/news/linedown-active.svg",
-          name: "线上线下活动",
+          name: "线上活动",
         },
       ],
       infomationList: [],

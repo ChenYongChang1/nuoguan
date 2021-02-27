@@ -43,26 +43,35 @@ export default {
 }
 .com-filter {
   width: 100%;
-  height: 80rpx;
-  padding: 5rpx 10rpx;
+  height: 200rpx;
+  background: url('/static/imgs/infomation/banner.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  // padding: 5rpx 10rpx;
   .input-filter {
     position: relative;
     border-radius: 8rpx;
-    width: 95%;
+    width: 630rpx;
+    height: 64rpx;
+    margin: 92rpx auto 0 auto;
+    border-radius: 32rpx;
+    background: url('/static/imgs/infomation/input.png');
+    background-size: cover;
+    background-repeat: no-repeat;
     .big {
       position: absolute;
       top: 50%;
-      left: 10rpx;
+      left: 24rpx;
       transform: translateY(-50%);
       width: 40rpx;
       height: 40rpx;
     }
     .search-input {
       display: block;
-      width: 100%;
+      width: 500rpx;
       height: 100%;
-      background: $moduleBg;
-      padding: 0 10rpx 0 60rpx;
+      // background: $moduleBg;
+      padding: 0 10rpx 0 75rpx;
     }
   }
   .all-filter {

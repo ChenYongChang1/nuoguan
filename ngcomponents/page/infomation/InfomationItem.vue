@@ -1,36 +1,30 @@
 <template>
   <navigator :url="articleUrl">
     <view class="community-row">
-      <view class="community-title ng-flex ng-flex-space ng-align-start">
-        <view class="title">{{ article.title }}</view>
+      <view class="infomation-cover">
+        <image :src="article.cover_img" mode="scaleToFill" />
       </view>
-      <view class="community-desc ng-flex ng-flex-space">
-        <view class="desc-img">
-          <image :src="article.cover_img" mode="scaleToFill" />
+      <view class="infomation-box">
+        <view class="infomation-box-title ellipsis-row-1">
+          {{ article.title }}
         </view>
-      </view>
-      <view class="comment ng-flex ng-flex-start ng-align-center" @tap.stop="">
-        <view class="like font-12 time ng-flex ng-align-center">
-          <view class="tag">置顶</view>
-        </view>
-        <view class="like font-12 time ng-flex ng-align-center">
-          {{ filterName }}
-        </view>
-        <view class="like font-12 ng-flex ng-align-center" @tap="likeArticle()">
-          <image
-            :src="
-              $strJoin(
-                `/static/imgs/community/`,
-                `${article.isLike ? 'like-active' : 'like'}.svg`
-              )
-            "
-            mode="scaleToFill"
-          />
-          19
-        </view>
-        <view class="like font-12 time ng-flex ng-align-center">
-          {{ article.created_at }}
-          <!-- {{ $formatLocalTime(article.created_at) }} -->
+        <view
+          class="comment ng-flex ng-flex-space ng-align-center"
+          @tap.stop=""
+        >
+          <view class="ng-flex">
+            <view class="like font-12 time ng-flex ng-align-center">
+              <view class="tag font-10">置顶</view>
+            </view>
+            <view class="like font-12 time ng-flex ng-align-center">
+              {{ article.created_at }}
+            </view>
+          </view>
+
+          <view class="like font-12 ng-flex ng-align-center">
+            <image src="/static/imgs/infomation/zan.png" mode="scaleToFill" />
+            0
+          </view>
         </view>
       </view>
     </view>
@@ -68,28 +62,29 @@ export default {
 <style lang="scss" scoped>
 .community-row {
   width: 100%;
-  padding: 40rpx 24rpx;
+  background: white;
+  border-radius: 8rpx;
+  // padding: 40rpx 24rpx;
   border-bottom: solid 1px $lineColor;
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
-  .community-title {
+  .infomation-cover {
     width: 100%;
-    margin-bottom: 30rpx;
-    .title {
-      width: 100%;
-      color: black;
-    }
+    height: 280rpx;
+    border-radius: 8rpx 8rpx 0 0;
+    overflow: hidden;
   }
-  .community-desc {
+  .infomation-box {
     width: 100%;
-    .desc {
-      width: calc(100% - 280rpx);
-      color: $secondFontColor;
-    }
-    .desc-img {
+    padding: 20rpx 32rpx;
+    .infomation-box-title {
       width: 100%;
-      height: 280rpx;
-      border-radius: 8rpx;
-      overflow: hidden;
+      height: 42rpx;
+      font-size: 15px;
+      font-weight: 400;
+      color: #000000;
+      line-height: 42rpx;
+      margin-bottom: 16rpx;
     }
   }
   .comment {
@@ -97,18 +92,20 @@ export default {
     height: 40rpx;
     margin-top: 24rpx;
     .like {
-      margin-right: 40rpx;
+      margin-right: 21rpx;
       color: $descFontColor;
       .tag {
-        padding: 4rpx 10rpx;
+        padding: 0 4rpx;
+        height: 32rpx;
+        line-height: 28rpx;
         border-radius: 4rpx;
-        border: solid 1px $warningColor;
-        color: $warningColor;
+        border: solid 1px $themeColor;
+        color: $themeColor;
       }
       > image {
         width: 30rpx;
         height: 30rpx;
-        margin-right: 14rpx;
+        margin-right: 8rpx;
       }
     }
   }

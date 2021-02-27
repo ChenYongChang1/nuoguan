@@ -89,7 +89,9 @@ image {
 .ng-flex-warp {
   flex-wrap: wrap;
 }
-
+.ng-content-start {
+  align-content: flex-start;
+}
 .ng-flex-1 {
   flex: 1;
 }
@@ -188,4 +190,26 @@ image {
 }
 .color-white {
   color: white;
+}
+
+.ellipsis-row-1 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ellipsis-row-2 {
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.ellipsis-row-3 {
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }

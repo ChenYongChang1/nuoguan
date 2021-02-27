@@ -2,5 +2,5 @@
 共用scss函数
  */
 @function themeColor($opacity: 1) {
-  @return rgba(244, 64, 76, $opacity);
+  @return rgba(200, 0, 47, $opacity);
 }
