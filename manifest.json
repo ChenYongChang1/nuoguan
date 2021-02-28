@@ -11,9 +11,10 @@
             "urlCheck" : true,
             "es6" : true,
             "postcss" : false,
-            "minified" : true
+            "minified" : false
         },
-        "usingComponents" : true
+        "usingComponents" : true,
+        "permission" : {}
     },
     "mp-alipay" : {
         "usingComponents" : true

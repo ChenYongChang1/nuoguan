@@ -1,56 +1,54 @@
 <template>
-  <navigator :url="articleUrl">
-    <view class="community-row box-shadow">
-      <view v-if="!userId" class="community-user ng-flex">
-        <view class="user-cover">
-          <image
-            src="https://cyc-save.oss-cn-shanghai.aliyuncs.com/nuoguan/eg_tulip.jpg"
-            mode="scaleToFill"
-          />
-        </view>
-        <view class="name-mech">
-          <view class="name">sweet</view>
-          <view class="positions">高级技工</view>
-        </view>
-        <view class="time">2020-12-23</view>
+  <view class="community-row box-shadow">
+    <view v-if="!userId" class="community-user ng-flex">
+      <view class="user-cover">
+        <image
+          src="https://cyc-save.oss-cn-shanghai.aliyuncs.com/nuoguan/eg_tulip.jpg"
+          mode="scaleToFill"
+        />
       </view>
-      <view class="community-title ellipsis-row-2">
-        教你如何用万用表判断电线电缆的断点教你如何用万用表判断电线电缆的断点教你如何用万用表判断电线电缆的断点
+      <view class="name-mech">
+        <view class="name">sweet</view>
+        <view class="positions">高级技工</view>
       </view>
-      <view class="community-desc">
-        <view class="image">
-          <image
-            src="https://cyc-save.oss-cn-shanghai.aliyuncs.com/nuoguan/eg_tulip.jpg"
-            mode="scaleToFill"
-          />
-        </view>
-        <view class="text ellipsis-row-3">
-          对于电路部分，有的时候工程宝也是无能为力，为啥？供电电路不知道哪一截断了。其实在施工过程中，对于供电部分，我们一般都是先用…
-        </view>
+      <view class="time">2020-12-23</view>
+    </view>
+    <view @click="$goPath(articleUrl)" class="ng-pointer community-title ellipsis-row-2">
+      教你如何用万用表判断电线电缆的断点教你如何用万用表判断电线电缆的断点教你如何用万用表判断电线电缆的断点
+    </view>
+    <view class="community-desc">
+      <view class="image">
+        <image
+          src="https://cyc-save.oss-cn-shanghai.aliyuncs.com/nuoguan/eg_tulip.jpg"
+          mode="scaleToFill"
+        />
       </view>
-      <view class="comment ng-flex ng-flex-space ng-align-center">
-        <view class="num ng-flex">
-          <image src="/static/imgs/comment/zhuanfa.png" mode="scaleToFill" />
-          <text>13</text>
-        </view>
-        <view class="num ng-flex">
-          <image src="/static/imgs/comment/comment.png" mode="scaleToFill" />
-          <text>13</text>
-        </view>
-        <view class="num ng-flex">
-          <image src="/static/imgs/comment/zan.png" mode="scaleToFill" />
-          <text>13</text>
-        </view>
+      <view class="text ellipsis-row-3">
+        对于电路部分，有的时候工程宝也是无能为力，为啥？供电电路不知道哪一截断了。其实在施工过程中，对于供电部分，我们一般都是先用…
       </view>
     </view>
-  </navigator>
+    <view class="comment ng-flex ng-flex-space ng-align-center">
+      <view class="num ng-flex">
+        <image src="/static/imgs/comment/zhuanfa.png" mode="scaleToFill" />
+        <text>13</text>
+      </view>
+      <view class="num ng-flex">
+        <image src="/static/imgs/comment/comment.png" mode="scaleToFill" />
+        <text>13</text>
+      </view>
+      <view class="num ng-flex">
+        <image src="/static/imgs/comment/zan.png" mode="scaleToFill" />
+        <text>13</text>
+      </view>
+    </view>
+  </view>
 </template>
 
 <script>
 export default {
   props: {
     userId: {
-      type: Number,
+      type: [String, Number],
       default: 0,
     },
   },

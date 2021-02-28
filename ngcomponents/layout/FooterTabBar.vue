@@ -7,7 +7,15 @@
         @click="showDialog"
       >
         <view class="icon">
-          <image src="/static/imgs/tabbar/brand.png" mode="scaleToFill" />
+          <image
+            :src="
+              $strJoin(
+                `/static/imgs/tabbar/`,
+                active === 'brand' ? 'brand-1.png' : 'brand.png'
+              )
+            "
+            mode="scaleToFill"
+          />
         </view>
         品牌
       </view>
@@ -17,7 +25,14 @@
         @click="changePage('/index/index', 'link')"
       >
         <view class="icon">
-          <image src="/static/imgs/tabbar/index.png" mode="scaleToFill"
+          <image
+            :src="
+              $strJoin(
+                `/static/imgs/tabbar/`,
+                active === 'index' ? 'index.png' : 'index-0.png'
+              )
+            "
+            mode="scaleToFill"
         /></view>
         首页
       </view>
@@ -27,7 +42,14 @@
         @click="changePage('/user/usercenter', 'link')"
       >
         <view class="icon">
-          <image src="/static/imgs/tabbar/my.png" mode="scaleToFill"
+          <image
+            :src="
+              $strJoin(
+                `/static/imgs/tabbar/`,
+                active === 'my' ? 'my-1.png' : 'my.png'
+              )
+            "
+            mode="scaleToFill"
         /></view>
         我的
       </view>
@@ -63,13 +85,13 @@ export default {
         this.oldPage = "";
         // 关闭弹框
         this.$refs.popup.close();
-        uni.navigateTo({ url: this.$strJoin("/pages", name) });
+        uni.redirectTo({ url: this.$strJoin("/pages", name) });
       }
     },
     dialogChange({ show, type }) {
       // 当弹框关闭的时候 返回选中之前的值 然后吧之前的值指空
       if (!show) {
-        this.$store.commit("SET_NOW_PAGE", this.oldPage || 'index');
+        this.$store.commit("SET_NOW_PAGE", this.oldPage || "index");
         this.oldPage = "";
       }
     },

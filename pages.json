@@ -36,34 +36,39 @@
         "navigationBarTitleText": "德力西电气"
       }
     },
-	{
-		"path" : "pages/community/commentsInfo",
-		"style" :                                                                                    
-		{
-			"navigationBarTitleText": "论坛 BBS",
-			"backgroundColorTop":"#000000",
-			"enablePullDownRefresh": false
-		}
-	},
-  {
-		"path" : "pages/game/game",
-		"style" :                                                                                    
-		{
-			"navigationBarTitleText": "玩游戏",
-			"backgroundColorTop":"#000000",
-			"enablePullDownRefresh": false
-		}
-	},
-  {
-		"path" : "pages/game/gameInfo",
-		"style" :                                                                                    
-		{
-			"navigationBarTitleText": "玩游戏",
-			"backgroundColorTop":"#000000",
-			"enablePullDownRefresh": false
-		}
-	}
-],
+    {
+      "path": "pages/community/commentsInfo",
+      "style": {
+        "navigationBarTitleText": "论坛 BBS",
+        "backgroundColorTop": "#000000",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/game/game",
+      "style": {
+        "navigationBarTitleText": "玩游戏",
+        "backgroundColorTop": "#000000",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/game/gameInfo",
+      "style": {
+        "navigationBarTitleText": "玩游戏",
+        "backgroundColorTop": "#000000",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/brand/brand",
+      "style": {
+        "navigationBarTitleText": " ",
+        "backgroundColorTop": "#000000",
+        "enablePullDownRefresh": false
+      }
+    }
+  ],
   "globalStyle": {
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "uni-app",

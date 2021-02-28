@@ -1,15 +1,11 @@
 <template>
   <view class="knoledge-box ng-flex">
-    <view class="knoledge">
-      <navigator url="/pages/infomation/infomation">
-        <image src="/static/imgs/1@2x.png" mode="scaleToFill" />
-      </navigator>
+    <view @tap="$goPath('/pages/infomation/infomation')" class="knoledge">
+      <image src="/static/imgs/1@2x.png" mode="scaleToFill" />
     </view>
     <view class="goods-box">
-      <view class="community">
-        <navigator url="/pages/community/community">
-          <image src="/static/imgs/2@2x.png" mode="scaleToFill" />
-        </navigator>
+      <view @tap="$goPath('/pages/community/community')" class="community">
+        <image src="/static/imgs/2@2x.png" mode="scaleToFill" />
       </view>
       <view class="community goods">
         <image src="/static/imgs/3@2x.png" mode="scaleToFill" />

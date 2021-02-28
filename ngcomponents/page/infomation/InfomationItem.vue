@@ -1,34 +1,29 @@
 <template>
-  <navigator :url="articleUrl">
-    <view class="community-row">
-      <view class="infomation-cover">
-        <image :src="article.cover_img" mode="scaleToFill" />
+  <view class="community-row" @tap="$goPath(articleUrl)">
+    <view class="infomation-cover">
+      <image :src="article.cover_img" mode="scaleToFill" />
+    </view>
+    <view class="infomation-box">
+      <view class="infomation-box-title ellipsis-row-1">
+        {{ article.title }}
       </view>
-      <view class="infomation-box">
-        <view class="infomation-box-title ellipsis-row-1">
-          {{ article.title }}
+      <view class="comment ng-flex ng-flex-space ng-align-center" @tap.stop="">
+        <view class="ng-flex">
+          <view class="like font-12 time ng-flex ng-align-center">
+            <view class="tag font-10">置顶</view>
+          </view>
+          <view class="like font-12 time ng-flex ng-align-center">
+            {{ article.created_at }}
+          </view>
         </view>
-        <view
-          class="comment ng-flex ng-flex-space ng-align-center"
-          @tap.stop=""
-        >
-          <view class="ng-flex">
-            <view class="like font-12 time ng-flex ng-align-center">
-              <view class="tag font-10">置顶</view>
-            </view>
-            <view class="like font-12 time ng-flex ng-align-center">
-              {{ article.created_at }}
-            </view>
-          </view>
 
-          <view class="like font-12 ng-flex ng-align-center">
-            <image src="/static/imgs/infomation/zan.png" mode="scaleToFill" />
-            0
-          </view>
+        <view class="like font-12 ng-flex ng-align-center">
+          <image src="/static/imgs/infomation/zan.png" mode="scaleToFill" />
+          0
         </view>
       </view>
     </view>
-  </navigator>
+  </view>
 </template>
 
 <script>

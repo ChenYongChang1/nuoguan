@@ -1,5 +1,5 @@
 <template>
-  <navigator :url="articleUrl" :style="{ width: widthA }">
+  <view :style="{ width: widthA }" @tap="$goPath(articleUrl)">
     <view v-if="type === 1" class="info-row">
       <view class="infomation-box">
         <view class="infomation-box-title ellipsis-row-1">
@@ -68,7 +68,7 @@
         </view>
       </view>
     </view>
-  </navigator>
+  </view>
 </template>
 
 <script>
