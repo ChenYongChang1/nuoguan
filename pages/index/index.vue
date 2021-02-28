@@ -35,7 +35,11 @@ export default {
   data() {
     return {};
   },
-  mounted() {
+  onShow() {
+    const strInfo = uni.getStorageSync('userInfo')
+    if(strInfo){
+      this.$store.commit("SET_USER_MESSAGE", JSON.parse(strInfo));
+    }
     this.$store.commit("SET_NOW_PAGE", "index");
   },
 };

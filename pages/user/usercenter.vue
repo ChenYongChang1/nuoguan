@@ -105,6 +105,24 @@ export default {
           console.log(res);
           if (res.code) {
             //发起网络请求
+            // let appid = "你的appId";
+            // let secret = "你的appSecret";
+            // let url =
+            //   "https://api.weixin.qq.com/sns/jscode2session?appid=" +
+            //   appid +
+            //   "&secret=" +
+            //   secret +
+            //   "&js_code=" +
+            //   res.code +
+            //   "&grant_type=authorization_code";
+            // uni.request({
+            //   url: url, // 请求路径
+            //   success: (result) => {
+            //     console.info(result.data.openid);
+            //   },
+            // });
+            // }
+
             var code = res.code;
             // 获取微信用户信息
             wx.getUserInfo({

@@ -14,6 +14,7 @@ const store = new Vuex.Store({
   mutations: {
     SET_USER_MESSAGE(state, user) {
       state.userInfo = user;
+      uni.setStorageSync("userInfo", JSON.stringify(user));
     },
     SET_NOW_PAGE(state, path) {
       state.nowPage = path;
