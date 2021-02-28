@@ -5,7 +5,7 @@
       <view v-for="(item, index) in list" :key="index" class="all-comment-item ng-flex">
         <view class="comm-user-cover">
           <image
-            src="https://www.w3school.com.cn/i/eg_tulip.jpg"
+            src="https://cyc-save.oss-cn-shanghai.aliyuncs.com/nuoguan/eg_tulip.jpg"
             mode="scaleToFill"
           />
         </view>

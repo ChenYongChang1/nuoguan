@@ -20,7 +20,7 @@
     </view>
     <view class="glod-user ng-flex" :class="showUserCard">
       <view class="user-big-cover">
-        <image src="/static/imgs/1@2x.png" mode="scaleToFill" />
+        <image src="https://cyc-save.oss-cn-shanghai.aliyuncs.com/nuoguan/eg_tulip.jpg" mode="scaleToFill" />
       </view>
       <view class="user-info">
         <view class="name"> stwen </view>
@@ -54,11 +54,11 @@ export default {
     return {
       list: [1, 2, 3, 4],
       userList: [
-        { name: "111", src: "/static/imgs/comment/banner.png", id: 1 },
-        { name: "222", src: "/static/imgs/comment/banner.png", id: 2 },
-        { name: "333", src: "/static/imgs/comment/banner.png", id: 3 },
-        { name: "444", src: "/static/imgs/comment/banner.png", id: 4 },
-        { name: "555", src: "/static/imgs/comment/banner.png", id: 5 },
+        { name: "111", src: "https://cyc-save.oss-cn-shanghai.aliyuncs.com/nuoguan/eg_tulip.jpg", id: 1 },
+        { name: "222", src: "https://cyc-save.oss-cn-shanghai.aliyuncs.com/nuoguan/eg_tulip.jpg", id: 2 },
+        { name: "333", src: "https://cyc-save.oss-cn-shanghai.aliyuncs.com/nuoguan/eg_tulip.jpg", id: 3 },
+        { name: "444", src: "https://cyc-save.oss-cn-shanghai.aliyuncs.com/nuoguan/eg_tulip.jpg", id: 4 },
+        { name: "555", src: "https://cyc-save.oss-cn-shanghai.aliyuncs.com/nuoguan/eg_tulip.jpg", id: 5 },
       ],
       filterData: {
         user: "",
@@ -122,12 +122,12 @@ export default {
 .glod-user {
   width: 100%;
   height: 302rpx;
-  background: url("/static/imgs/comment/user-bg.png");
+  background: url("https://cyc-save.oss-cn-shanghai.aliyuncs.com/nuoguan/user-bg.png");
   background-repeat: no-repeat;
   background-size: cover;
   padding: 46rpx 40rpx 0 40rpx;
   opacity: 0;
-  transition: opacity .3s ease;
+  transition: opacity 0.3s ease;
   position: relative;
   z-index: 0;
   .user-big-cover {

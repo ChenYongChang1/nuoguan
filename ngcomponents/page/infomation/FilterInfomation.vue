@@ -43,7 +43,7 @@ export default {
 .com-filter {
   width: 100%;
   height: 200rpx;
-  background: url("/static/imgs/infomation/banner.png");
+  background: url("https://cyc-save.oss-cn-shanghai.aliyuncs.com/nuoguan/info-banner.png");
   background-repeat: no-repeat;
   background-size: cover;
   // padding: 5rpx 10rpx;
@@ -54,7 +54,7 @@ export default {
     height: 64rpx;
     margin: 92rpx auto 0 auto;
     border-radius: 32rpx;
-    background: url("/static/imgs/infomation/input.png");
+    background: url("https://cyc-save.oss-cn-shanghai.aliyuncs.com/nuoguan/input.png");
     background-size: cover;
     background-repeat: no-repeat;
     .big {

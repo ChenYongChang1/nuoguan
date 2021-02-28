@@ -4,7 +4,7 @@
       <view v-if="!userId" class="community-user ng-flex">
         <view class="user-cover">
           <image
-            src="https://www.w3school.com.cn/i/eg_tulip.jpg"
+            src="https://cyc-save.oss-cn-shanghai.aliyuncs.com/nuoguan/eg_tulip.jpg"
             mode="scaleToFill"
           />
         </view>
@@ -20,7 +20,7 @@
       <view class="community-desc">
         <view class="image">
           <image
-            src="https://www.w3school.com.cn/i/eg_tulip.jpg"
+            src="https://cyc-save.oss-cn-shanghai.aliyuncs.com/nuoguan/eg_tulip.jpg"
             mode="scaleToFill"
           />
         </view>

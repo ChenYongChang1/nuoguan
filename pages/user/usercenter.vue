@@ -237,7 +237,7 @@ export default {
     width: 714rpx;
     min-height: calc(100vh - 680rpx);
     margin: 36rpx auto;
-    background: url("/static/imgs/user/mask.png");
+    background: url("https://cyc-save.oss-cn-shanghai.aliyuncs.com/nuoguan/mask.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
