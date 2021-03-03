@@ -1,7 +1,5 @@
 <template>
   <view class="weui-tabbar" :class="extClass">
-    {{ current }}
-    {{ active }}
     <!-- 选中的时候往weui-tabbar__item加class:weui-bar__item_on -->
     <view
       @click="tabChange(index)"
@@ -38,12 +36,16 @@ export default {
   data() {
     return {
       extClass: "",
-      current: 1,
     };
   },
-  watch: {
-    active(val) {
-      this.current = this.list.findIndex((item) => item.page === val) || 1;
+  computed: {
+    current() {
+      console.log(
+        this.active,
+        this.list.findIndex((item) => item.page === this.active)
+      );
+      const index = this.list.findIndex((item) => item.page === this.active);
+      return index > -1 ? index : 1;
     },
   },
   methods: {
@@ -51,7 +53,7 @@ export default {
       if (index === this.current) {
         return;
       }
-      //   this.current = index;
+      // this.current = index;
       this.$emit("tabChange", index);
     },
   },
@@ -98,7 +100,7 @@ export default {
 .weui-tabbar__item.weui-bar__item_on .weui-tabbar__icon,
 .weui-tabbar__item.weui-bar__item_on .weui-tabbar__icon > i,
 .weui-tabbar__item.weui-bar__item_on .weui-tabbar__label {
-  color: #1296db;
+  color: $themeColor;
 }
 .weui-tabbar__icon {
   display: inline-block;

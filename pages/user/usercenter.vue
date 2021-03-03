@@ -153,7 +153,7 @@ export default {
 <style lang="scss" scoped>
 .user-info {
   width: 100%;
-  min-height: 100vh;
+  min-height: calc(100vh - 180rpx);
   background: $bodyBg;
   .user-cover {
     width: 100%;
@@ -253,7 +253,7 @@ export default {
   }
   .user-menu {
     width: 714rpx;
-    min-height: calc(100vh - 680rpx);
+    min-height: calc(100vh - 800rpx);
     margin: 36rpx auto;
     background: url("https://cyc-save.oss-cn-shanghai.aliyuncs.com/nuoguan/mask.png");
     background-position: center;

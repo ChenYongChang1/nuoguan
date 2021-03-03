@@ -1,5 +1,5 @@
 <template>
-  <view>
+  <view class="footer-box">
     <hans-tabbar
       :active="isBrand ? 'brand' : active"
       :list="list"
@@ -9,65 +9,6 @@
       <view class="menu ng-text-center">品牌</view>
     </uni-popup>
   </view>
-  <!-- <view>
-    <view class="footer-box ng-flex ng-flex-around ng-align-center">
-      <view
-        class="ng-flex ng-flex-center ng-flex-column ng-text-center"
-        :class="{ active: active === 'brand' }"
-        @click="showDialog"
-      >
-        <view class="icon">
-          <image
-            :src="
-              $strJoin(
-                `/static/imgs/tabbar/`,
-                active === 'brand' ? 'brand-1.png' : 'brand.png'
-              )
-            "
-            mode="scaleToFill"
-          />
-        </view>
-        品牌
-      </view>
-      <view
-        class="ng-flex ng-flex-center ng-flex-column ng-text-center"
-        :class="{ active: active === 'index' }"
-        @click="changePage('/index/index', 'link')"
-      >
-        <view class="icon">
-          <image
-            :src="
-              $strJoin(
-                `/static/imgs/tabbar/`,
-                active === 'index' ? 'index.png' : 'index-0.png'
-              )
-            "
-            mode="scaleToFill"
-        /></view>
-        首页
-      </view>
-      <view
-        class="ng-flex ng-flex-center ng-flex-column ng-text-center"
-        :class="{ active: active === 'my' }"
-        @click="changePage('/user/usercenter', 'link')"
-      >
-        <view class="icon">
-          <image
-            :src="
-              $strJoin(
-                `/static/imgs/tabbar/`,
-                active === 'my' ? 'my-1.png' : 'my.png'
-              )
-            "
-            mode="scaleToFill"
-        /></view>
-        我的
-      </view>
-    </view>
-    <uni-popup ref="popup" mas type="share" @close="dialogChange">
-      <view class="menu ng-text-center">品牌</view>
-    </uni-popup>
-  </view> -->
 </template>
 
 <script>
@@ -79,6 +20,7 @@ export default {
   data() {
     return {
       isBrand: false,
+      // active: "index",
       list: [
         {
           page: "brand",
@@ -106,9 +48,6 @@ export default {
   },
   computed: {
     active() {
-      //   const pages = getCurrentPages();
-      //   const page = pages[pages.length - 1].route;
-      //   page.split("/").reverse()[0] ===
       return this.$store.state.nowPage; // this.$store.nowPage;
     },
   },
@@ -117,47 +56,25 @@ export default {
       if (this.list[index].page === "brand") {
         this.showDialog();
       } else {
+        this.isBrand = false;
         // 取消记录的老值
-        this.oldPage = "";
+        // this.active = this.list[index].page;
+        this.$store.commit("SET_NOW_PAGE", this.list[index].page || "index");
+        console.log(this.active, "this.active");
         // 关闭弹框
         this.$refs.popup.close();
         this.$goPath(this.list[index].path, 2);
+        console.log(this.active);
       }
     },
-    // changePage(name, type) {
-    //   if (type === "link") {
-    //     // 取消记录的老值
-    //     this.oldPage = "";
-    //     // 关闭弹框
-    //     this.$refs.popup.close();
-    //     uni.redirectTo({ url: this.$strJoin("/pages", name) });
-    //   }
-    // },
     dialogChange({ show, type }) {
-      // this.isBrand = false
-      // 当弹框关闭的时候 返回选中之前的值 然后吧之前的值指空
       if (!show) {
-        this.isBrand = false
-        this.$refs.popup.close();
-        // this.$store.commit("SET_NOW_PAGE", this.oldPage || "index");
-        // this.oldPage = "";
+        this.isBrand = false;
       }
     },
     showDialog() {
-      this.isBrand = true
+      this.isBrand = true;
       this.$refs.popup.open();
-      // if (this.oldPage === this.active) {
-      //   // 老值和 现在vuex里面的相同则表示 需要取消弹框
-      //   // this.changePage("brand");
-      //   this.$store.commit("SET_NOW_PAGE", this.oldPage);
-      //   this.$refs.popup.close();
-      //   this.oldPage = "";
-      // } else {
-      //   this.oldPage = this.active;
-      //   // this.changePage("brand");
-      //   this.$store.commit("SET_NOW_PAGE", "brand");
-      //   this.$refs.popup.open();
-      // }
     },
   },
 };
@@ -171,6 +88,8 @@ export default {
   position: fixed;
   bottom: 0;
   left: 0;
+  width: 100%;
+  bottom: 0;
   .icon {
     width: 44rpx;
     height: 44rpx;
