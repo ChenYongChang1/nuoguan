@@ -1,5 +1,15 @@
 <template>
   <view>
+    <hans-tabbar
+      :active="isBrand ? 'brand' : active"
+      :list="list"
+      @tabChange="tabChange"
+    ></hans-tabbar>
+    <uni-popup ref="popup" mas type="share" @close="dialogChange">
+      <view class="menu ng-text-center">品牌</view>
+    </uni-popup>
+  </view>
+  <!-- <view>
     <view class="footer-box ng-flex ng-flex-around ng-align-center">
       <view
         class="ng-flex ng-flex-center ng-flex-column ng-text-center"
@@ -57,16 +67,40 @@
     <uni-popup ref="popup" mas type="share" @close="dialogChange">
       <view class="menu ng-text-center">品牌</view>
     </uni-popup>
-  </view>
+  </view> -->
 </template>
 
 <script>
 import uniPopup from "components/uni-popup/uni-popup";
+import hansTabbar from "components/hans-tabbar/hans-tabbar";
 export default {
   name: "FooterTabBar",
-  components: { uniPopup },
+  components: { uniPopup, hansTabbar },
   data() {
     return {
+      isBrand: false,
+      list: [
+        {
+          page: "brand",
+          text: "品牌",
+          iconPath: "/static/imgs/tabbar/brand.png",
+          selectedIconPath: "/static/imgs/tabbar/brand-1.png",
+        },
+        {
+          page: "index",
+          text: "首页",
+          path: "/pages/index/index",
+          iconPath: "/static/imgs/tabbar/index-0.png",
+          selectedIconPath: "/static/imgs/tabbar/index.png",
+        },
+        {
+          page: "my",
+          text: "我的",
+          path: "/pages/user/usercenter",
+          iconPath: "/static/imgs/tabbar/my.png",
+          selectedIconPath: "/static/imgs/tabbar/my-1.png",
+        },
+      ],
       oldPage: "",
     };
   },
@@ -79,35 +113,51 @@ export default {
     },
   },
   methods: {
-    changePage(name, type) {
-      if (type === "link") {
+    tabChange(index) {
+      if (this.list[index].page === "brand") {
+        this.showDialog();
+      } else {
         // 取消记录的老值
         this.oldPage = "";
         // 关闭弹框
         this.$refs.popup.close();
-        uni.redirectTo({ url: this.$strJoin("/pages", name) });
+        this.$goPath(this.list[index].path, 2);
       }
     },
+    // changePage(name, type) {
+    //   if (type === "link") {
+    //     // 取消记录的老值
+    //     this.oldPage = "";
+    //     // 关闭弹框
+    //     this.$refs.popup.close();
+    //     uni.redirectTo({ url: this.$strJoin("/pages", name) });
+    //   }
+    // },
     dialogChange({ show, type }) {
+      // this.isBrand = false
       // 当弹框关闭的时候 返回选中之前的值 然后吧之前的值指空
       if (!show) {
-        this.$store.commit("SET_NOW_PAGE", this.oldPage || "index");
-        this.oldPage = "";
+        this.isBrand = false
+        this.$refs.popup.close();
+        // this.$store.commit("SET_NOW_PAGE", this.oldPage || "index");
+        // this.oldPage = "";
       }
     },
     showDialog() {
-      if (this.oldPage === this.active) {
-        // 老值和 现在vuex里面的相同则表示 需要取消弹框
-        // this.changePage("brand");
-        this.$store.commit("SET_NOW_PAGE", this.oldPage);
-        this.$refs.popup.close();
-        this.oldPage = "";
-      } else {
-        this.oldPage = this.active;
-        // this.changePage("brand");
-        this.$store.commit("SET_NOW_PAGE", "brand");
-        this.$refs.popup.open();
-      }
+      this.isBrand = true
+      this.$refs.popup.open();
+      // if (this.oldPage === this.active) {
+      //   // 老值和 现在vuex里面的相同则表示 需要取消弹框
+      //   // this.changePage("brand");
+      //   this.$store.commit("SET_NOW_PAGE", this.oldPage);
+      //   this.$refs.popup.close();
+      //   this.oldPage = "";
+      // } else {
+      //   this.oldPage = this.active;
+      //   // this.changePage("brand");
+      //   this.$store.commit("SET_NOW_PAGE", "brand");
+      //   this.$refs.popup.open();
+      // }
     },
   },
 };
