@@ -42,8 +42,7 @@ export default {
           iconPath: "/static/imgs/tabbar/my.png",
           selectedIconPath: "/static/imgs/tabbar/my-1.png",
         },
-      ],
-      oldPage: "",
+      ]
     };
   },
   computed: {
@@ -60,7 +59,6 @@ export default {
         // 取消记录的老值
         // this.active = this.list[index].page;
         this.$store.commit("SET_NOW_PAGE", this.list[index].page || "index");
-        console.log(this.active, "this.active");
         // 关闭弹框
         this.$refs.popup.close();
         this.$goPath(this.list[index].path, 2);

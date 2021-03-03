@@ -40,10 +40,6 @@ export default {
   },
   computed: {
     current() {
-      console.log(
-        this.active,
-        this.list.findIndex((item) => item.page === this.active)
-      );
       const index = this.list.findIndex((item) => item.page === this.active);
       return index > -1 ? index : 1;
     },
@@ -53,7 +49,6 @@ export default {
       if (index === this.current) {
         return;
       }
-      // this.current = index;
       this.$emit("tabChange", index);
     },
   },
