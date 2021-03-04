@@ -22,7 +22,7 @@ export default {
       default: "",
     },
     defaultVal: {
-      type: Number,
+      type: [Number, String],
       default: 0,
     },
     filterBtn: {

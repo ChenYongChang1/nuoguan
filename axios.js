@@ -1,4 +1,4 @@
-const urlConfig = "/ng";
+const urlConfig = "https://ng.wwwmoban.com/xcx/v1";
 
 const axios = {
   async get(url, header) {

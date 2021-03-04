@@ -44,9 +44,8 @@ export default {
       );
     },
   },
-  async onShow() {
-    await this.getArticleGenre();
-    this.getInfoMation();
+  onShow() {
+    this.getArticleGenre();
   },
   methods: {
     // ...mapActions("infomation", ["getInfomationList"]),
@@ -58,7 +57,8 @@ export default {
       const res = await this.$store.dispatch("infomation/getArticleGenre");
       if (res.list && res.list.length) {
         this.filterBtn = res.list;
-        this.filterData.tab = res.list[0].id;
+        // this.filterData.tab = res.list[0].id;
+        this.hanlderChange({ type: "tab", value: res.list[0].id });
       } else {
         this.filterBtn = [];
       }

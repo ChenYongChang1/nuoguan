@@ -1,21 +1,42 @@
 <template>
-  <view :style="{ width: widthA }" @tap="$goPath(articleUrl)">
+  <view :style="{ width: widthA }">
     <view v-if="type === 1" class="info-row">
       <view class="infomation-box">
-        <view class="infomation-box-title ellipsis-row-1">
+        <view
+          class="infomation-box-title ellipsis-row-1"
+          @tap="$goPath(articleUrl)"
+        >
           {{ article.title }}
         </view>
       </view>
       <view class="infomation-cover">
-        <image :src="article.cover_img" mode="scaleToFill" />
-        <view class="mask">
+        <video
+          v-if="playerVideo"
+          :src="article.file_path"
+          :autoplay="true"
+          :poster="article.cover_img"
+        ></video>
+        <image
+          v-if="!playerVideo"
+          :src="article.cover_img"
+          mode="scaleToFill"
+        />
+        <view
+          v-if="!playerVideo"
+          class="mask"
+          @tap="playerVideo = true"
+          :autoplay="true"
+        >
           <image src="/static/imgs/infomation/play.png" mode="scaleToFill" />
         </view>
       </view>
       <view class="infomation-box">
         <view class="comment ng-flex ng-flex-space ng-align-center">
           <view class="ng-flex">
-            <view v-if="article.tag" class="like font-12 time ng-flex ng-align-center">
+            <view
+              v-if="article.tag"
+              class="like font-12 time ng-flex ng-align-center"
+            >
               <view class="tag font-10">{{ article.tag }}</view>
             </view>
             <view class="like font-12 time ng-flex ng-align-center">
@@ -37,22 +58,27 @@
           src="/static/imgs/infomation/pdf.png"
         ></image>
         <view class="pdf-desc">
-          <view class="pdf-title ng-text-center"> 电工实用手册</view>
-          <view class="time ng-text-center font-10">{{
-            article.created_at
-          }}</view>
+          <view class="pdf-title ng-text-center" @tap="$goPath(articleUrl)">
+            {{ article.title }}
+          </view>
+          <view class="time ng-text-center font-10">
+            {{ article.created_at }}
+          </view>
           <view class="jifen ng-text-center font-12">2积分</view>
         </view>
       </view>
     </view>
-    <view v-if="type === 0 && article.cover_img" class="info-row-word">
+    <view
+      v-if="type === 0 && article.cover_img"
+      class="info-row-word padding-0"
+    >
       <infomation-item
         :article="article"
         :filter-name="filterName"
       ></infomation-item>
     </view>
     <view v-else-if="type === 0" class="info-row-word">
-      <view class="word-title ellipsis-row-1">
+      <view class="word-title ellipsis-row-1" @tap="$goPath(articleUrl)">
         {{ article.title }}
       </view>
       <view class="word-desc ellipsis-row-3">
@@ -62,7 +88,10 @@
       <view class="infomation-box">
         <view class="comment ng-flex ng-flex-space ng-align-center">
           <view class="ng-flex">
-            <view v-if="article.tag" class="like font-12 time ng-flex ng-align-center">
+            <view
+              v-if="article.tag"
+              class="like font-12 time ng-flex ng-align-center"
+            >
               <view class="tag font-10">{{ article.tag }}</view>
             </view>
             <view class="like font-12 time ng-flex ng-align-center">
@@ -98,7 +127,9 @@ export default {
     },
   },
   data() {
-    return {};
+    return {
+      playerVideo: false,
+    };
   },
   computed: {
     articleUrl() {
@@ -168,6 +199,10 @@ export default {
     height: 288rpx;
     // border-radius: 8rpx 8rpx 0 0;
     overflow: hidden;
+    video {
+      width: 100%;
+      height: 100%;
+    }
     .mask {
       position: absolute;
       top: 0;
@@ -194,6 +229,7 @@ export default {
   box-sizing: border-box;
   border-radius: 8rpx;
   overflow: hidden;
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
   .info-pdf-item {
     width: 320rpx;
     background: white;
@@ -262,5 +298,8 @@ export default {
     background: $themeColor;
     opacity: 0.49;
   }
+}
+.padding-0 {
+  padding: 0;
 }
 </style>
