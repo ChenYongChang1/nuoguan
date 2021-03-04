@@ -1,18 +1,21 @@
 <template>
-  <view class="infomation">
-    <filter-infomation></filter-infomation>
-    <!-- <wx-swiper></wx-swiper> -->
-    <filter-tab-info
-      filter-type="tab"
-      :default-val="filterData.tab"
-      :filter-btn="filterBtn"
-      @toggle="hanlderChange"
-    ></filter-tab-info>
-    <infomation-list
-      :infomation-list="infomationList"
-      :filter-name="filterName.name"
-      :filter-data="filterData"
-    ></infomation-list>
+  <view>
+    <view class="infomation opacity1">
+      <filter-infomation @toggle="hanlderChange"></filter-infomation>
+      <!-- <wx-swiper></wx-swiper> -->
+      <filter-tab-info
+        v-if="filterBtn.length"
+        filter-type="tab"
+        :default-val="filterData.tab"
+        :filter-btn="filterBtn"
+        @toggle="hanlderChange"
+      ></filter-tab-info>
+      <infomation-list
+        :infomation-list="infomationList"
+        :filter-name="filterName.name"
+        :filter-data="filterData"
+      ></infomation-list>
+    </view>
   </view>
 </template>
 
@@ -25,39 +28,24 @@ export default {
   data() {
     return {
       filterData: {
+        word: "",
         tab: 0,
         page: 1,
         pageSize: 20,
       },
-      filterBtn: [
-        {
-          value: 0,
-          name: "新品速递",
-        },
-        {
-          value: 1,
-          name: "行业快讯",
-        },
-        {
-          value: 2,
-          name: "新闻播报",
-        },
-        {
-          value: 3,
-          name: "线上活动",
-        },
-      ],
+      filterBtn: [],
       infomationList: [],
     };
   },
   computed: {
     filterName() {
       return (
-        this.filterBtn.find((item) => item.value === this.filterData.tab) || {}
+        this.filterBtn.find((item) => item.id === this.filterData.tab) || {}
       );
     },
   },
-  onShow() {
+  async onShow() {
+    await this.getArticleGenre();
     this.getInfoMation();
   },
   methods: {
@@ -65,6 +53,15 @@ export default {
     hanlderChange({ type, value }) {
       this.filterData[type] = value;
       this.getInfoMation();
+    },
+    async getArticleGenre() {
+      const res = await this.$store.dispatch("infomation/getArticleGenre");
+      if (res.list && res.list.length) {
+        this.filterBtn = res.list;
+        this.filterData.tab = res.list[0].id;
+      } else {
+        this.filterBtn = [];
+      }
     },
     async getInfoMation() {
       const res = await this.$store.dispatch(
@@ -78,6 +75,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.opacity {
+  opacity: 0;
+}
 .infomation {
   width: 100%;
   background: $bodyBg;

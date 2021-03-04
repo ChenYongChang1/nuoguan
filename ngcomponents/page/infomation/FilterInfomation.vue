@@ -15,6 +15,8 @@
         v-model="filterData.word"
         class="search-input font-13"
         placeholder="搜索你感兴趣的内容"
+        @change="changeWord"
+        @keydown.enter="changeWord(filterData.word)"
         placeholder-class="input-placeholder"
       />
     </view>
@@ -25,6 +27,10 @@
 export default {
   components: {},
   props: {
+    filterType: {
+      type: String,
+      default: "word",
+    },
     bgImg: {
       type: String,
       default: "info-banner.png",
@@ -32,13 +38,19 @@ export default {
   },
   data() {
     return {
+      timer: "",
       filterData: {
         word: "",
-        filter: [0, 0],
       },
     };
   },
   methods: {
+    changeWord(e) {
+      this.timer && clearTimeout(this.timer)
+      this.timer = setTimeout(() => {
+        this.$emit("toggle", { type: this.filterType, value: e });
+      }, 100);
+    },
     hanlderChange({ type, value }) {
       this.filterData[type] = value;
     },

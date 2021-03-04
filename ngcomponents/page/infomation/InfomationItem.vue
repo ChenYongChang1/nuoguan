@@ -19,7 +19,7 @@
 
         <view class="like font-12 ng-flex ng-align-center">
           <image src="/static/imgs/infomation/zan.png" mode="scaleToFill" />
-          0
+          {{ article.praise_num }}
         </view>
       </view>
     </view>
@@ -58,10 +58,10 @@ export default {
 .community-row {
   width: 100%;
   background: white;
-  border-radius: 8rpx;
+  // border-radius: 8rpx;
   // padding: 40rpx 24rpx;
-  border-bottom: solid 1px $lineColor;
-  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+  // border-bottom: solid 1px $lineColor;
+  // box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
   .infomation-cover {
     width: 100%;

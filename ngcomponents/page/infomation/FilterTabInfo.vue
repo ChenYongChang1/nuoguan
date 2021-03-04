@@ -3,7 +3,7 @@
     <view class="filter-tab ng-flex">
       <view
         class="btn-item ng-text-center font-14 weight-550"
-        :class="{ active: item.value === defaultVal }"
+        :class="{ active: item.id === defaultVal }"
         v-for="(item, index) in filterBtn"
         :key="index"
         @tap="toggle(item)"
@@ -35,8 +35,7 @@ export default {
   },
   methods: {
     toggle(row) {
-      console.log(row);
-      this.$emit("toggle", { type: this.filterType, value: row.value });
+      this.$emit("toggle", { type: this.filterType, value: row.id });
     },
   },
 };

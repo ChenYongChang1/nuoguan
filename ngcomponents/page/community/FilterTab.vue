@@ -28,23 +28,23 @@ export default {
     return {
       filterBtn: [
         {
-          value: 1,
+          id: 1,
           name: "论坛",
         },
         {
-          value: 2,
+          id: 2,
           name: "大咖说",
         },
         {
-          value: 3,
+          id: 3,
           name: "推荐",
         },
         {
-          value: 4,
+          id: 4,
           name: "试用申请",
         },
         {
-          value: 5,
+          id: 5,
           name: "就业",
         },
       ],

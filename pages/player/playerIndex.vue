@@ -25,19 +25,19 @@ export default {
       },
       filterBtn: [
         {
-          value: 0,
+          id: 0,
           name: "正在直播",
         },
         {
-          value: 1,
+          id: 1,
           name: "线上活动",
         },
         {
-          value: 2,
+          id: 2,
           name: "线下活动",
         },
         {
-          value: 3,
+          id: 3,
           name: "热门活动",
         },
       ],
@@ -47,7 +47,7 @@ export default {
   computed: {
     filterName() {
       return (
-        this.filterBtn.find((item) => item.value === this.filterData.tab) || {}
+        this.filterBtn.find((item) => item.id === this.filterData.tab) || {}
       );
     },
   },

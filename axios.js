@@ -1,4 +1,4 @@
-const urlConfig = "https://ng.wwwmoban.com/api/v1";
+const urlConfig = "/ng";
 
 const axios = {
   async get(url, header) {

@@ -15,8 +15,8 @@
       <view class="infomation-box">
         <view class="comment ng-flex ng-flex-space ng-align-center">
           <view class="ng-flex">
-            <view class="like font-12 time ng-flex ng-align-center">
-              <view class="tag font-10">置顶</view>
+            <view v-if="article.tag" class="like font-12 time ng-flex ng-align-center">
+              <view class="tag font-10">{{ article.tag }}</view>
             </view>
             <view class="like font-12 time ng-flex ng-align-center">
               {{ article.created_at }}
@@ -25,7 +25,7 @@
 
           <view class="like font-12 ng-flex ng-align-center">
             <image src="/static/imgs/infomation/zan.png" mode="scaleToFill" />
-            0
+            {{ article.praise_num }}
           </view>
         </view>
       </view>
@@ -38,12 +38,20 @@
         ></image>
         <view class="pdf-desc">
           <view class="pdf-title ng-text-center"> 电工实用手册</view>
-          <view class="time ng-text-center font-10">2020/13/43</view>
+          <view class="time ng-text-center font-10">{{
+            article.created_at
+          }}</view>
           <view class="jifen ng-text-center font-12">2积分</view>
         </view>
       </view>
     </view>
-    <view v-if="type === 3" class="info-row-word">
+    <view v-if="type === 0 && article.cover_img" class="info-row-word">
+      <infomation-item
+        :article="article"
+        :filter-name="filterName"
+      ></infomation-item>
+    </view>
+    <view v-else-if="type === 0" class="info-row-word">
       <view class="word-title ellipsis-row-1">
         {{ article.title }}
       </view>
@@ -54,8 +62,8 @@
       <view class="infomation-box">
         <view class="comment ng-flex ng-flex-space ng-align-center">
           <view class="ng-flex">
-            <view class="like font-12 time ng-flex ng-align-center">
-              <view class="tag font-10">置顶</view>
+            <view v-if="article.tag" class="like font-12 time ng-flex ng-align-center">
+              <view class="tag font-10">{{ article.tag }}</view>
             </view>
             <view class="like font-12 time ng-flex ng-align-center">
               {{ article.created_at }}
@@ -63,7 +71,7 @@
           </view>
           <view class="like font-12 ng-flex ng-align-center">
             <image src="/static/imgs/infomation/zan.png" mode="scaleToFill" />
-            0
+            {{ article.praise_num }}
           </view>
         </view>
       </view>
@@ -72,7 +80,9 @@
 </template>
 
 <script>
+import InfomationItem from "ngcomponents/page/infomation/InfomationItem";
 export default {
+  components: { InfomationItem },
   props: {
     article: {
       type: Object,
@@ -151,6 +161,7 @@ export default {
   box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
   padding: 20rpx 32rpx;
+  margin-bottom: 18rpx;
   .infomation-cover {
     position: relative;
     width: 100%;
@@ -179,6 +190,7 @@ export default {
 }
 .info-row-pdf {
   // padding: 40rpx 24rpx;
+  margin-bottom: 18rpx;
   box-sizing: border-box;
   border-radius: 8rpx;
   overflow: hidden;
