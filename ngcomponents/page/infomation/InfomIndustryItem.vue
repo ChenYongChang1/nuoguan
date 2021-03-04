@@ -58,7 +58,7 @@
           src="/static/imgs/infomation/pdf.png"
         ></image>
         <view class="pdf-desc">
-          <view class="pdf-title ng-text-center" @tap="$goPath(articleUrl)">
+          <view class="pdf-title ng-text-center" @tap="openPdf(article)">
             {{ article.title }}
           </view>
           <view class="time ng-text-center font-10">
@@ -142,6 +142,17 @@ export default {
   methods: {
     likeArticle() {
       this.article.isLike = !this.article.isLike;
+    },
+    openPdf(article) {
+      this.$goPath('/pages/common/openPdf?links='+article.file_path)
+      // uni.downloadFile({
+      //   url: article.file_path,
+      //   success: function (res) {
+      //     const filePath = res.tempFilePath;
+      //     uni.openDocument({ filePath });
+      //   },
+      // });
+      // uni.openDocument({ filePath: article.file_path + "?v=41927" });
     },
   },
 };

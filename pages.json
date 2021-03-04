@@ -75,6 +75,14 @@
         "backgroundColorTop": "#000000",
         "enablePullDownRefresh": false
       }
+    },
+    {
+      "path": "pages/common/openPdf",
+      "style": {
+        "navigationBarTitleText": "pdf",
+        "backgroundColorTop": "#000000",
+        "enablePullDownRefresh": false
+      }
     }
   ],
   "globalStyle": {
