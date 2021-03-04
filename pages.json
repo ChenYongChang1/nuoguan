@@ -67,6 +67,14 @@
         "backgroundColorTop": "#000000",
         "enablePullDownRefresh": false
       }
+    },
+    {
+      "path": "pages/player/playerIndex",
+      "style": {
+        "navigationBarTitleText": "点播间",
+        "backgroundColorTop": "#000000",
+        "enablePullDownRefresh": false
+      }
     }
   ],
   "globalStyle": {

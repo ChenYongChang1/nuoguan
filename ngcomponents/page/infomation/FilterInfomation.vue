@@ -1,5 +1,10 @@
 <template>
   <view class="com-filter ng-flex ng-flex-space">
+    <image
+      class="bg-image"
+      :src="`https://cyc-save.oss-cn-shanghai.aliyuncs.com/nuoguan/${bgImg}`"
+      mode="scaleToFill"
+    />
     <view class="input-filter">
       <image
         class="big"
@@ -19,6 +24,12 @@
 <script>
 export default {
   components: {},
+  props: {
+    bgImg: {
+      type: String,
+      default: "info-banner.png",
+    },
+  },
   data() {
     return {
       filterData: {
@@ -43,9 +54,15 @@ export default {
 .com-filter {
   width: 100%;
   height: 200rpx;
-  background: url("https://cyc-save.oss-cn-shanghai.aliyuncs.com/nuoguan/info-banner.png");
   background-repeat: no-repeat;
   background-size: cover;
+  position: relative;
+  .bg-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+  }
   // padding: 5rpx 10rpx;
   .input-filter {
     position: relative;

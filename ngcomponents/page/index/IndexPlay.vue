@@ -28,7 +28,7 @@ export default {
           src: "/static/imgs/5@2x.png",
         },
         {
-          href: "",
+          href: "/pages/player/playerIndex",
           src: "/static/imgs/6@2x.png",
         },
       ],
