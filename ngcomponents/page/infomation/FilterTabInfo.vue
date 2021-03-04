@@ -44,6 +44,7 @@ export default {
 <style lang="scss" scoped>
 .filter-box-tab {
   padding: 0 24rpx;
+  box-sizing: border-box;
 }
 .filter-tab {
   width: 100%;
