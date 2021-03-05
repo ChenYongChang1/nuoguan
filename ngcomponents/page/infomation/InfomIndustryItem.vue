@@ -52,7 +52,7 @@
       </view>
     </view>
     <view v-if="type === 2" class="info-row-pdf">
-      <view class="info-pdf-item">
+      <view class="info-pdf-item" @tap="openPdf(article)">
         <image
           class="info-pdf-img"
           src="/static/imgs/infomation/pdf.png"
@@ -144,7 +144,7 @@ export default {
       this.article.isLike = !this.article.isLike;
     },
     openPdf(article) {
-      this.$goPath('/pages/common/openPdf?links='+article.file_path)
+      this.$goPath("/pages/common/openPdf?links=" + article.file_path);
       // uni.downloadFile({
       //   url: article.file_path,
       //   success: function (res) {
