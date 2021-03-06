@@ -12,7 +12,6 @@ const store = new Vuex.Store({
   },
   state: {
     identify: "",
-    userInfo: {},
     nowPage: "index",
   },
   mutations: {
@@ -23,10 +22,10 @@ const store = new Vuex.Store({
         data: identify,
       });
     },
-    SET_USER_MESSAGE(state, user) {
-      state.userInfo = user;
-      uni.setStorageSync("userInfo", JSON.stringify(user));
-    },
+    // SET_USER_MESSAGE(state, user) {
+    //   state.userInfo = user;
+    //   uni.setStorageSync("userInfo", JSON.stringify(user));
+    // },
     SET_NOW_PAGE(state, path) {
       state.nowPage = path;
     },

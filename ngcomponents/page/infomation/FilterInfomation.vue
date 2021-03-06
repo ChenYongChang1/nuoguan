@@ -16,7 +16,7 @@
         class="search-input font-13"
         placeholder="搜索你感兴趣的内容"
         @change="changeWord"
-        @keydown.enter="changeWord(filterData.word)"
+        @keydown.enter="changeWord({ target: { value: filterData.word } })"
         placeholder-class="input-placeholder"
       />
     </view>
@@ -46,9 +46,9 @@ export default {
   },
   methods: {
     changeWord(e) {
-      this.timer && clearTimeout(this.timer)
+      this.timer && clearTimeout(this.timer);
       this.timer = setTimeout(() => {
-        this.$emit("toggle", { type: this.filterType, value: e });
+        this.$emit("toggle", { type: this.filterType, value: e.target.value });
       }, 100);
     },
     hanlderChange({ type, value }) {

@@ -5,13 +5,15 @@
       <image src="/static/imgs/infomation/pdf.png" mode="scaleToFill" />
     </view>
     <view class="pdf-desc ng-text-center">
-      <view class="title">电工实用课程手册</view>
-      <view class="title">课时六 《正反转能耗制动与控制》</view>
+      <view class="title">{{ article.title }}</view>
+      <!-- <view class="title">课时六 《正反转能耗制动与控制》</view> -->
       <view class="pdf-time">2021-03-01</view>
     </view>
     <view class="pdf-download ng-text-center">
       <view class="pdf-time">下载所需1积分</view>
-      <view class="info-btn-down ng-text-center"> 下载获取 </view>
+      <view class="info-btn-down ng-text-center" @tap="openPdf">
+        下载获取
+      </view>
     </view>
   </view>
 </template>
@@ -29,6 +31,9 @@ export default {
     };
   },
   methods: {
+    openPdf() {
+      this.$goPath("/pages/common/openPdf?links=" + this.article.file_path);
+    },
     async getInfomation(id) {
       this.id = id;
       const res = await this.$store.dispatch("infomation/getInfomationDetail", {

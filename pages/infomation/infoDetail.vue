@@ -8,7 +8,7 @@
       </view>
       <view class="content" v-html="article.content"></view>
     </article>
-    <view class="guanggao">
+    <view v-if="false" class="guanggao">
       <view class="gg-title"> 喜欢此内容的人还喜欢 </view>
       <view class="gg-row ng-flex ng-flex-space">
         <view class="title-gg">

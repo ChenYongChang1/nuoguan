@@ -192,7 +192,7 @@ export default {
     height: 108rpx;
     border-bottom: solid 1px $lineColor;
     .label {
-      width: 140rpx;
+      width: 160rpx;
       height: 40rpx;
       font-size: 14px;
       font-family: PingFangSC-Regular, PingFang SC;
@@ -202,7 +202,7 @@ export default {
       margin-right: 20rpx;
     }
     .value {
-      width: 510rpx;
+      width: 450rpx;
       font-size: 14px;
       input {
         font-size: 14px;

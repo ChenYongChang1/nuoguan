@@ -193,7 +193,7 @@ export default {
     height: 100vh;
     background: $maskColor;
     .login-phone-inner {
-      width: 480rpx;
+      width: 550rpx;
       height: 280rpx;
       background: #ffffff;
       border-radius: 16rpx;
@@ -223,6 +223,7 @@ export default {
         width: 100%;
         padding: 20rpx 0;
         button {
+          border-radius: 0;
           &::after {
             border: none;
           }

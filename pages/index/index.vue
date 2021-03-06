@@ -40,15 +40,10 @@ export default {
       return this.$store.state.user.userInfo || {};
     },
   },
-  async mounted() {
-
+  async onShow() {
     if (!this.userInfo.openId) {
       this.$goPath("/pages/login/login");
       return;
-    }
-    const strInfo = uni.getStorageSync("userInfo");
-    if (strInfo) {
-      this.$store.commit("SET_USER_MESSAGE", JSON.parse(strInfo));
     }
     this.$store.commit("SET_NOW_PAGE", "index");
   },

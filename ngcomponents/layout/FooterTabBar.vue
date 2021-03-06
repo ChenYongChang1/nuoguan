@@ -50,7 +50,7 @@ export default {
       return this.$store.state.nowPage; // this.$store.nowPage;
     },
   },
-  mounted(options) {
+  onShow(options) {
     this.getTabBar()
   },
   methods: {
