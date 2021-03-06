@@ -42,7 +42,7 @@ export default {
           iconPath: "/static/imgs/tabbar/my.png",
           selectedIconPath: "/static/imgs/tabbar/my-1.png",
         },
-      ]
+      ],
     };
   },
   computed: {
@@ -50,7 +50,14 @@ export default {
       return this.$store.state.nowPage; // this.$store.nowPage;
     },
   },
+  mounted(options) {
+    this.getTabBar()
+  },
   methods: {
+    async getTabBar() {
+      const res = await this.$store.dispatch("getMenuTabbar");
+      console.log(res);
+    },
     tabChange(index) {
       if (this.list[index].page === "brand") {
         this.showDialog();

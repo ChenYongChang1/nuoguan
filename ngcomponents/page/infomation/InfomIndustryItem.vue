@@ -52,13 +52,13 @@
       </view>
     </view>
     <view v-if="type === 2" class="info-row-pdf">
-      <view class="info-pdf-item" @tap="openPdf(article)">
+      <view class="info-pdf-item" @tap="$goPath(articlePdfUrl)">
         <image
           class="info-pdf-img"
           src="/static/imgs/infomation/pdf.png"
         ></image>
         <view class="pdf-desc">
-          <view class="pdf-title ng-text-center" @tap="openPdf(article)">
+          <view class="pdf-title ng-text-center" @tap="$goPath(articlePdfUrl)">
             {{ article.title }}
           </view>
           <view class="time ng-text-center font-10">
@@ -82,7 +82,7 @@
         {{ article.title }}
       </view>
       <view class="word-desc ellipsis-row-3">
-        诺冠为石油、天然气和化工行业提供安全性、可靠性和耐用性等方面值得信赖的解决方案，以应对全球最极端的环境和工作条件，在此方面…
+        {{ article.title }}
       </view>
       <view class="line"></view>
       <view class="infomation-box">
@@ -134,6 +134,9 @@ export default {
   computed: {
     articleUrl() {
       return `/pages/infomation/infoDetail?id=${this.article.id}`;
+    },
+    articlePdfUrl() {
+      return `/pages/infomation/infoPdf?id=${this.article.id}`;
     },
     widthA() {
       return this.type === 2 ? "auto" : "100%";

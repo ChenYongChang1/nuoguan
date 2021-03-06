@@ -35,9 +35,27 @@ export default {
   data() {
     return {};
   },
-  onShow() {
-    const strInfo = uni.getStorageSync('userInfo')
-    if(strInfo){
+  computed: {
+    userInfo() {
+      return this.$store.state.user.userInfo || {};
+    },
+  },
+  async onShow() {
+    const user = await uni.getStorageSync("userInfo");
+    console.log(user, "user");
+    if (user) {
+      try {
+        const userInfo = JSON.parse(user);
+        this.$store.commit("user/SET_USER_INFO", userInfo || {});
+      } catch (e) {}
+    }
+    console.log(this.userInfo);
+    if (!this.userInfo.openId) {
+      this.$goPath("/pages/login/login");
+      return;
+    }
+    const strInfo = uni.getStorageSync("userInfo");
+    if (strInfo) {
       this.$store.commit("SET_USER_MESSAGE", JSON.parse(strInfo));
     }
     this.$store.commit("SET_NOW_PAGE", "index");

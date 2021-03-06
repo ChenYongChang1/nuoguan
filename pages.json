@@ -33,7 +33,13 @@
     {
       "path": "pages/infomation/infoDetail",
       "style": {
-        "navigationBarTitleText": "德力西电气"
+        "navigationBarTitleText": "详情"
+      }
+    },
+    {
+      "path": "pages/infomation/infoPdf",
+      "style": {
+        "navigationBarTitleText": "详情"
       }
     },
     {
@@ -80,6 +86,14 @@
       "path": "pages/common/openPdf",
       "style": {
         "navigationBarTitleText": "pdf",
+        "backgroundColorTop": "#000000",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/login/login",
+      "style": {
+        "navigationBarTitleText": "登陆",
         "backgroundColorTop": "#000000",
         "enablePullDownRefresh": false
       }
