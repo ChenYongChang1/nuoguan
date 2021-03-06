@@ -25,8 +25,25 @@ Vue.prototype.$goPath = (url, type = 1, auth = "") => {
     uni.switchTab({ url });
   }
 };
+
 const app = new Vue({
   store,
   ...App,
 });
+
+const user = uni.getStorageSync("userInfo");
+
+if (user) {
+  // 获取缓存的用户信息
+  try {
+    const userInfo = JSON.parse(user);
+    app.$store.commit("user/SET_USER_INFO", userInfo || {});
+  } catch (e) {}
+}
+const identify = uni.getStorageSync("_IDENTIFY");
+if (identify) {
+  // 获取缓存的权限
+  app.$store.commit("SET_IDENTIFY", identify || "");
+}
+
 app.$mount();

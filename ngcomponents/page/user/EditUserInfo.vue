@@ -128,18 +128,7 @@ export default {
       return new Date().getTime();
     },
     userInfo() {
-      return {
-        phone: "18896551937",
-        openId: "oBm_I5eLUSWjSwmaCXw_V6F-cyo0",
-        nickName: "今天周二",
-        gender: 1,
-        language: "zh_CN",
-        city: "",
-        province: "",
-        country: "Andorra",
-        avatarUrl:
-          "https://thirdwx.qlogo.cn/mmopen/vi_32/PiajxSqBRaEIhsxUEeQn6iaq1Za4k8EguJ0wzDgoicWwbCN6AcX386ianQBJqAOBeTcjtzAGzuVfibicuQtV8QXicZib4A/132",
-      }; // this.$store.state.user.userInfo;
+      return this.$store.state.user.userInfo;
     },
   },
   mounted() {
@@ -150,8 +139,8 @@ export default {
   },
   methods: {
     saveAll() {
-      this.$store.commit("user/SET_USER_INFO", this.userInfo);
-      this.$goPath('/')
+      this.$store.commit("user/SET_USER_INFO", this.editUserInfo);
+      this.$goPath('/pages/index/index', 2)
     },
     change({ data }) {
       //   console.log(e);

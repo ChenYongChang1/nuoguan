@@ -40,16 +40,8 @@ export default {
       return this.$store.state.user.userInfo || {};
     },
   },
-  async onShow() {
-    const user = await uni.getStorageSync("userInfo");
-    console.log(user, "user");
-    if (user) {
-      try {
-        const userInfo = JSON.parse(user);
-        this.$store.commit("user/SET_USER_INFO", userInfo || {});
-      } catch (e) {}
-    }
-    console.log(this.userInfo);
+  async mounted() {
+
     if (!this.userInfo.openId) {
       this.$goPath("/pages/login/login");
       return;

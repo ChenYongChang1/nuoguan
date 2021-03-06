@@ -16,10 +16,7 @@
             <button
               v-else
               class="login-btn"
-              form-type="submit"
-              open-type="getUserInfo"
-              bindgetuserinfo="getUserInfo"
-              @getuserinfo="getuserinfo"
+              @tap="$goPath('/pages/login/login', 2)"
             ></button>
           </view>
           <view class="cover-name ng-text-center">{{
@@ -39,27 +36,27 @@
         </view>
       </view>
       <view class="user-menu">
-        <navigator
+        <!-- <navigator :url="item.url" open-type="navigate"> -->
+        <view
           v-for="item in menu"
           :key="item.src"
-          :url="item.url"
-          open-type="navigate"
+          class="menu-item ng-flex ng-flex-space ng-align-center"
+          @tap="$goPath(item.url, 2)"
         >
-          <view class="menu-item ng-flex ng-flex-space ng-align-center">
-            <view class="menu-name ng-flex ng-align-center">
-              <image
-                :src="$strJoin('/static/imgs/user/', item.src)"
-                mode="scaleToFill"
-              />
-              <text>{{ item.name }}</text>
-            </view>
+          <view class="menu-name ng-flex ng-align-center">
             <image
-              class="right-come"
-              src="/static/imgs/user/right.png"
+              :src="$strJoin('/static/imgs/user/', item.src)"
               mode="scaleToFill"
             />
+            <text>{{ item.name }}</text>
           </view>
-        </navigator>
+          <image
+            class="right-come"
+            src="/static/imgs/user/right.png"
+            mode="scaleToFill"
+          />
+        </view>
+        <!-- </navigator> -->
       </view>
     </view>
     <tab-bar></tab-bar>
@@ -97,55 +94,7 @@ export default {
     },
   },
   methods: {
-    getuserinfo() {
-      const _this = this;
-      // wx登录
-      wx.login({
-        success(res) {
-          console.log(res);
-          if (res.code) {
-            //发起网络请求
-            // let appid = "你的appId";
-            // let secret = "你的appSecret";
-            // let url =
-            //   "https://api.weixin.qq.com/sns/jscode2session?appid=" +
-            //   appid +
-            //   "&secret=" +
-            //   secret +
-            //   "&js_code=" +
-            //   res.code +
-            //   "&grant_type=authorization_code";
-            // uni.request({
-            //   url: url, // 请求路径
-            //   success: (result) => {
-            //     console.info(result.data.openid);
-            //   },
-            // });
-            // }
-
-            var code = res.code;
-            // 获取微信用户信息
-            wx.getUserInfo({
-              success: function (res) {
-                const userInfo = res.userInfo;
-                _this.$store.commit("SET_USER_MESSAGE", userInfo);
-                console.log(userInfo);
-                // var nickName = userInfo.nickName;
-                // var avatarUrl = userInfo.avatarUrl;
-                // var gender = userInfo.gender; //性别 0：未知、1：男、2：女
-                // var province = userInfo.province;
-                // var city = userInfo.city;
-                // var country = userInfo.country;
-              },
-              fail: (res) => {
-                // 获取失败的去引导用户授权
-              },
-            });
-          } else {
-          }
-        },
-      });
-    },
+    getuserinfo() {},
   },
 };
 </script>

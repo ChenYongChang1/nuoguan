@@ -12,7 +12,7 @@ axios.interceptors.request.use(
   (config) => {
     const URLAll = config.url.replace(urlConfig, "");
     const [url] = URLAll.split("?");
-    console.log(`当前请求 ${url}`, config);
+    console.log(`当前请求 ${url}`);
     // if (whiteUrl.every((item) => item !== url)) {
     const identify = store.state.identify;
     if (config.method === "post") {

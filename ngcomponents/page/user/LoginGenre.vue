@@ -53,7 +53,7 @@
         <view class="grade-title ng-text-center">前往设置完善个人信息</view>
         <button
           class="login-btn submit-message login-btn-small"
-          @tab="continueSetting"
+          @tap="continueSetting"
         >
           去设置
         </button>

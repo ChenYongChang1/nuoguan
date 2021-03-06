@@ -23,6 +23,7 @@ export default {
   },
   methods: {
     setStep(step) {
+      console.log("step", step);
       this.step = step;
     },
     submitGenre(genre) {},

@@ -18,6 +18,10 @@ const store = new Vuex.Store({
   mutations: {
     SET_IDENTIFY(state, identify) {
       state.identify = identify;
+      uni.setStorage({
+        key: "_IDENTIFY",
+        data: identify,
+      });
     },
     SET_USER_MESSAGE(state, user) {
       state.userInfo = user;
