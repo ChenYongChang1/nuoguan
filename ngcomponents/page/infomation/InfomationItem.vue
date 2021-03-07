@@ -17,8 +17,13 @@
           </view>
         </view>
 
-        <view class="like font-12 ng-flex ng-align-center">
-          <image src="/static/imgs/infomation/zan.png" mode="scaleToFill" />
+        <view class="like font-12 ng-flex ng-align-center" @tap="likeArticle">
+          <image
+            :src="`/static/imgs/infomation/${
+              article.isLike ? 'zan-active.svg' : 'zan.png'
+            }`"
+            mode="scaleToFill"
+          />
           {{ article.praise_num }}
         </view>
       </view>
@@ -48,7 +53,7 @@ export default {
   },
   methods: {
     likeArticle() {
-      this.article.isLike = !this.article.isLike;
+      this.$emit("likeArticle");
     },
   },
 };

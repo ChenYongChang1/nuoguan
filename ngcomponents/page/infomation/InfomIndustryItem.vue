@@ -44,8 +44,13 @@
             </view>
           </view>
 
-          <view class="like font-12 ng-flex ng-align-center">
-            <image src="/static/imgs/infomation/zan.png" mode="scaleToFill" />
+          <view class="like font-12 ng-flex ng-align-center" @tap="likeArticle">
+            <image
+              :src="`/static/imgs/infomation/${
+                article.isLike ? 'zan-active.svg' : 'zan.png'
+              }`"
+              mode="scaleToFill"
+            />
             {{ article.praise_num }}
           </view>
         </view>
@@ -75,6 +80,7 @@
       <infomation-item
         :article="article"
         :filter-name="filterName"
+        @likeArticle="likeArticle"
       ></infomation-item>
     </view>
     <view v-else-if="type === 0" class="info-row-word">
@@ -99,7 +105,12 @@
             </view>
           </view>
           <view class="like font-12 ng-flex ng-align-center">
-            <image src="/static/imgs/infomation/zan.png" mode="scaleToFill" />
+            <image
+              :src="`/static/imgs/infomation/${
+                article.isLike ? 'zan-active.svg' : 'zan.png'
+              }`"
+              mode="scaleToFill"
+            />
             {{ article.praise_num }}
           </view>
         </view>
@@ -143,8 +154,18 @@ export default {
     },
   },
   methods: {
-    likeArticle() {
-      this.article.isLike = !this.article.isLike;
+    async likeArticle() {
+      const isLike = false;
+      const res = await this.$store.dispatch("infomation/articleThumbsUp", {
+        id: this.article.id,
+      });
+      if (res.has_praise === 1) {
+        isLike = true;
+      }
+      // this.article.isLike = !this.article.isLike;
+      this.$set(this.article, "isLike", isLike);
+      this.article.praise_num =
+        this.article.praise_num + (isLike ? 1 : -1);
     },
     openPdf(article) {
       this.$goPath("/pages/common/openPdf?links=" + article.file_path);
