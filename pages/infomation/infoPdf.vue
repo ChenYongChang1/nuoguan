@@ -7,7 +7,7 @@
     <view class="pdf-desc ng-text-center">
       <view class="title">{{ article.title }}</view>
       <!-- <view class="title">课时六 《正反转能耗制动与控制》</view> -->
-      <view class="pdf-time">2021-03-01</view>
+      <view class="pdf-time">{{ article.created_at }}</view>
     </view>
     <view class="pdf-download ng-text-center">
       <view class="pdf-time">下载所需1积分</view>
