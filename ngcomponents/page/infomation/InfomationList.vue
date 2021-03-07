@@ -11,7 +11,7 @@
         :class="item.type === 2 ? 'pdf-item' : 'info-item'"
       >
         <infom-industry-item
-          :article="item"
+          :article="{ ...item, isLike: false }"
           :type="item.type"
           :filter-name="filterName"
         ></infom-industry-item>

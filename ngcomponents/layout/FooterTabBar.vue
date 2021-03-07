@@ -27,6 +27,7 @@ export default {
           text: "品牌",
           iconPath: "/static/imgs/tabbar/brand.png",
           selectedIconPath: "/static/imgs/tabbar/brand-1.png",
+          child: [],
         },
         {
           page: "index",
@@ -51,7 +52,7 @@ export default {
     },
   },
   onShow(options) {
-    this.getTabBar()
+    this.getTabBar();
   },
   methods: {
     async getTabBar() {

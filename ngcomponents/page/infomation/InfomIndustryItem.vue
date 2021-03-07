@@ -6,19 +6,19 @@
           class="infomation-box-title ellipsis-row-1"
           @tap="$goPath(articleUrl)"
         >
-          {{ article.title }}
+          {{ articleInfo.title }}
         </view>
       </view>
       <view class="infomation-cover">
         <video
           v-if="playerVideo"
-          :src="article.file_path"
+          :src="articleInfo.file_path"
           :autoplay="true"
-          :poster="article.cover_img"
+          :poster="articleInfo.cover_img"
         ></video>
         <image
           v-if="!playerVideo"
-          :src="article.cover_img"
+          :src="articleInfo.cover_img"
           mode="scaleToFill"
         />
         <view
@@ -34,24 +34,24 @@
         <view class="comment ng-flex ng-flex-space ng-align-center">
           <view class="ng-flex">
             <view
-              v-if="article.tag"
+              v-if="articleInfo.tag"
               class="like font-12 time ng-flex ng-align-center"
             >
-              <view class="tag font-10">{{ article.tag }}</view>
+              <view class="tag font-10">{{ articleInfo.tag }}</view>
             </view>
             <view class="like font-12 time ng-flex ng-align-center">
-              {{ article.created_at }}
+              {{ articleInfo.created_at }}
             </view>
           </view>
 
           <view class="like font-12 ng-flex ng-align-center" @tap="likeArticle">
             <image
               :src="`/static/imgs/infomation/${
-                article.isLike ? 'zan-active.svg' : 'zan.png'
+                articleInfo.isLike ? 'zan-active.svg' : 'zan.png'
               }`"
               mode="scaleToFill"
             />
-            {{ article.praise_num }}
+            {{ articleInfo.praise_num }}
           </view>
         </view>
       </view>
@@ -64,54 +64,54 @@
         ></image>
         <view class="pdf-desc">
           <view class="pdf-title ng-text-center" @tap="$goPath(articlePdfUrl)">
-            {{ article.title }}
+            {{ articleInfo.title }}
           </view>
           <view class="time ng-text-center font-10">
-            {{ article.created_at }}
+            {{ articleInfo.created_at }}
           </view>
           <view class="jifen ng-text-center font-12">2积分</view>
         </view>
       </view>
     </view>
     <view
-      v-if="type === 0 && article.cover_img"
+      v-if="type === 0 && articleInfo.cover_img"
       class="info-row-word padding-0"
     >
       <infomation-item
-        :article="article"
+        :article="articleInfo"
         :filter-name="filterName"
         @likeArticle="likeArticle"
       ></infomation-item>
     </view>
     <view v-else-if="type === 0" class="info-row-word">
       <view class="word-title ellipsis-row-1" @tap="$goPath(articleUrl)">
-        {{ article.title }}
+        {{ articleInfo.title }}
       </view>
       <view class="word-desc ellipsis-row-3">
-        {{ article.title }}
+        {{ articleInfo.title }}
       </view>
       <view class="line"></view>
       <view class="infomation-box">
         <view class="comment ng-flex ng-flex-space ng-align-center">
           <view class="ng-flex">
             <view
-              v-if="article.tag"
+              v-if="articleInfo.tag"
               class="like font-12 time ng-flex ng-align-center"
             >
-              <view class="tag font-10">{{ article.tag }}</view>
+              <view class="tag font-10">{{ articleInfo.tag }}</view>
             </view>
             <view class="like font-12 time ng-flex ng-align-center">
-              {{ article.created_at }}
+              {{ articleInfo.created_at }}
             </view>
           </view>
           <view class="like font-12 ng-flex ng-align-center">
             <image
               :src="`/static/imgs/infomation/${
-                article.isLike ? 'zan-active.svg' : 'zan.png'
+                articleInfo.isLike ? 'zan-active.svg' : 'zan.png'
               }`"
               mode="scaleToFill"
             />
-            {{ article.praise_num }}
+            {{ articleInfo.praise_num }}
           </view>
         </view>
       </view>
@@ -132,6 +132,10 @@ export default {
       type: Number,
       default: 1, // 1为视频  2 是文件 3是图文
     },
+    index: {
+      type: Number,
+      default: 0,
+    },
     filterName: {
       type: String,
       default: "",
@@ -139,6 +143,7 @@ export default {
   },
   data() {
     return {
+      articleInfo: {},
       playerVideo: false,
     };
   },
@@ -153,19 +158,26 @@ export default {
       return this.type === 2 ? "auto" : "100%";
     },
   },
+  onShow() {
+    this.articleInfo = JSON.parse(JSON.stringify(this.article));
+  },
+  mounted() {
+    this.articleInfo = JSON.parse(JSON.stringify(this.article));
+  },
   methods: {
     async likeArticle() {
-      const isLike = false;
+      let isLike = false;
       const res = await this.$store.dispatch("infomation/articleThumbsUp", {
-        id: this.article.id,
+        id: this.articleInfo.id,
       });
+      console.log(res, "dd", res.has_praise === 1);
       if (res.has_praise === 1) {
         isLike = true;
       }
-      // this.article.isLike = !this.article.isLike;
-      this.$set(this.article, "isLike", isLike);
-      this.article.praise_num =
-        this.article.praise_num + (isLike ? 1 : -1);
+      this.articleInfo.isLike = isLike; // !this.articleInfo.isLike;
+      // this.$set(this.articleInfo, "isLike", isLike);
+      this.articleInfo.praise_num = this.articleInfo.praise_num + (isLike ? 1 : -1);
+      // this.$emit("setPraise", { this.articleInfo, index: this.index });
     },
     openPdf(article) {
       this.$goPath("/pages/common/openPdf?links=" + article.file_path);
