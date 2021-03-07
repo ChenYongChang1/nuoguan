@@ -5,7 +5,13 @@
       v-for="(item, index) in list"
       :key="$strJoin('help-', index)"
     >
-      <image :src="item.src" mode="scaleToFill" />
+      <navigator
+        :url="item.href"
+        open-type="navigate"
+        hover-class="navigator-hover"
+      >
+        <image :src="item.src" mode="scaleToFill" />
+      </navigator>
     </view>
   </view>
 </template>
@@ -16,15 +22,17 @@ export default {
     return {
       list: [
         {
-          href: "",
+          href:
+            "/pages/game/gameInfo?href=https://www.norgren.com.cn/index.php/Home/Search/filter/",
           src: "/static/imgs/7@2x.png",
         },
         {
-          href: "",
+          href: "/pages/game/gameInfo?href=https://www.norgren.com.cn/",
           src: "/static/imgs/8@2x.png",
         },
         {
-          href: "",
+          href:
+            "/pages/game/gameInfo?href=https://www.norgren.com.cn/index.php/Home/Search/filter/",
           src: "/static/imgs/9@2x.png",
         },
       ],

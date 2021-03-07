@@ -32,7 +32,35 @@ export default {
   },
   methods: {
     openPdf() {
-      this.$goPath("/pages/common/openPdf?links=" + this.article.file_path);
+      uni.downloadFile({
+        url: this.article.file_path,
+        success: (res) => {
+          console.log(res);
+          if (res.statusCode === 200) {
+            console.log("下载成功");
+            // uni.showToast({
+            //   icon: "none",
+            //   mask: true,
+            //   title: "文件已保存：" + res.tempFilePath, //保存路径
+            //   duration: 3000,
+            // });
+            setTimeout(() => {
+              //打开文档查看
+              uni.openDocument({
+                filePath: res.tempFilePath,
+                success: function (res) {
+                  console.log("打开文档成功");
+                },
+              });
+            }, 3000);
+          }
+        },
+        fail(e) {
+          console.log(e, "ddd");
+        },
+      });
+      console.log(this.article.file_path, "this.article.file_path");
+      // this.$goPath("/pages/common/openPdf?links=" + this.article.file_path);
     },
     async getInfomation(id) {
       this.id = id;

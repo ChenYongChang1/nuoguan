@@ -31,24 +31,34 @@ export default {
     return {
       games: [
         {
-          name: "超级玛丽",
+          name: "幸运翻牌",
           src: "/static/imgs/game/chaojimali.png",
-          href: "/pages/game/gameInfo?id=" + 1,
+          href: `/pages/game/gameInfo?href=https://store.eqxiu.com/gc/detail/1806632`,
         },
         {
-          name: "魂斗罗",
+          name: "牛转乾坤",
           src: "/static/imgs/game/hundouluo.png",
-          href: "/pages/game/gameInfo?id=" + 2,
+          href: `/pages/game/gameInfo?href=https://store.eqxiu.com/gc/detail/1694221`,
         },
         {
-          name: "坦克大战",
+          name: "气动消消乐",
           src: "/static/imgs/game/tanke.png",
-          href: "/pages/game/gameInfo?id=" + 3,
+          href: `/pages/game/gameInfo?href=https://store.eqxiu.com/gc/detail/1289284`,
         },
         {
-          name: "街霸对决",
+          name: "百变扭蛋机",
           src: "/static/imgs/game/pk.png",
-          href: "/pages/game/gameInfo?id=" + 4,
+          href: `/pages/game/gameInfo?href=https://store.eqxiu.com/gc/detail/1627635`,
+        },
+        {
+          name: "保护诺博士",
+          src: "/static/imgs/game/pk.png",
+          href: `/pages/game/gameInfo?href=https://store.eqxiu.com/gc/detail/1614313`,
+        },
+        {
+          name: "跳一跳",
+          src: "/static/imgs/game/pk.png",
+          href: `/pages/game/gameInfo?href=https://store.eqxiu.com/gc/detail/1316770`,
         },
       ],
     };
