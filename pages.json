@@ -83,9 +83,9 @@
       }
     },
     {
-      "path": "pages/common/openPdf",
+      "path": "pages/common/openWebview",
       "style": {
-        "navigationBarTitleText": "pdf",
+        "navigationBarTitleText": "common",
         "backgroundColorTop": "#000000",
         "enablePullDownRefresh": false
       }

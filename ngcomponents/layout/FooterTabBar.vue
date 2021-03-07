@@ -1,12 +1,20 @@
 <template>
   <view class="footer-box">
     <hans-tabbar
-      :active="isBrand ? 'brand' : active"
+      :active="isBrand || active"
       :list="list"
       @tabChange="tabChange"
     ></hans-tabbar>
     <uni-popup ref="popup" mas type="share" @close="dialogChange">
-      <view class="menu ng-text-center">品牌</view>
+      <view class="child-menu">
+        <view
+          v-for="(item, index) in children"
+          :key="index"
+          class="menu ng-text-center"
+          @tap="goChildPath(item.href)"
+          >{{ item.name }}</view
+        >
+      </view>
     </uni-popup>
   </view>
 </template>
@@ -19,15 +27,32 @@ export default {
   components: { uniPopup, hansTabbar },
   data() {
     return {
-      isBrand: false,
-      // active: "index",
+      isBrand: "",
+      children: [],
       list: [
         {
           page: "brand",
           text: "品牌",
           iconPath: "/static/imgs/tabbar/brand.png",
           selectedIconPath: "/static/imgs/tabbar/brand-1.png",
-          child: [],
+          child: [
+            {
+              name: "诺家品牌",
+              href: "https://www.norgren.com.cn/page/3.html",
+            },
+            {
+              name: "诺家新闻",
+              href: "https://www.norgren.com.cn/399/index.html",
+            },
+            {
+              name: "产品专区",
+              href: "https://www.norgren.com.cn/index.php/Home/Search/filter/",
+            },
+            {
+              name: "下载中心",
+              href: "https://www.norgren.com.cn/388/index.html",
+            },
+          ],
         },
         {
           page: "index",
@@ -48,26 +73,30 @@ export default {
   },
   computed: {
     active() {
-      return this.$store.state.nowPage; // this.$store.nowPage;
+      return this.$store.state.nowPage;
     },
   },
   onShow(options) {
     this.getTabBar();
   },
   methods: {
+    goChildPath(path){
+      this.$goWebViewPath(path)
+    },
     async getTabBar() {
       const res = await this.$store.dispatch("getMenuTabbar");
       console.log(res);
     },
     tabChange(index) {
-      if (this.list[index].page === "brand") {
-        this.showDialog();
+      if (this.list[index].child && this.list[index].child.length > 0) {
+        this.showDialog(this.list[index].page);
+        this.children = this.list[index].child;
       } else {
-        this.isBrand = false;
+        this.isBrand = "";
         // 取消记录的老值
         // this.active = this.list[index].page;
-        this.$store.commit("SET_NOW_PAGE", this.list[index].page || "index");
         // 关闭弹框
+        this.$store.commit("SET_NOW_PAGE", this.list[index].page || "index");
         this.$refs.popup.close();
         this.$goPath(this.list[index].path, 2);
         console.log(this.active);
@@ -75,11 +104,11 @@ export default {
     },
     dialogChange({ show, type }) {
       if (!show) {
-        this.isBrand = false;
+        this.isBrand = "";
       }
     },
-    showDialog() {
-      this.isBrand = true;
+    showDialog(page) {
+      this.isBrand = page;
       this.$refs.popup.open();
     },
   },
@@ -106,13 +135,19 @@ export default {
     color: $themeColor;
   }
 }
+.child-menu {
+  width: 100%;
+  position: absolute;
+  bottom: 148rpx;
+}
 .menu {
   width: 100%;
   min-height: 50rpx;
   color: white;
-  position: absolute;
-  bottom: 148rpx;
   background: $themeColor;
   padding: 10px 0;
+}
+.menu:nth-child(2n) {
+  // background: rgb(139, 17, 46);
 }
 </style>

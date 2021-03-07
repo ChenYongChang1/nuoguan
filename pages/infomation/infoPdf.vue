@@ -27,40 +27,34 @@ export default {
   data() {
     return {
       id: "",
+      isCanDown: true,
       article: {},
     };
   },
   methods: {
-    openPdf() {
-      uni.downloadFile({
+    async openPdf() {
+      if (!this.isCanDown) {
+        return;
+      }
+      this.isCanDown = false;
+      uni.showToast({
+        icon: "none",
+        mask: true,
+        title: "打开文件。。。", //保存路径
+        duration: 5000,
+      });
+      const [, res] = await uni.downloadFile({
         url: this.article.file_path,
-        success: (res) => {
-          console.log(res);
-          if (res.statusCode === 200) {
-            console.log("下载成功");
-            // uni.showToast({
-            //   icon: "none",
-            //   mask: true,
-            //   title: "文件已保存：" + res.tempFilePath, //保存路径
-            //   duration: 3000,
-            // });
-            setTimeout(() => {
-              //打开文档查看
-              uni.openDocument({
-                filePath: res.tempFilePath,
-                success: function (res) {
-                  console.log("打开文档成功");
-                },
-              });
-            }, 3000);
-          }
-        },
-        fail(e) {
-          console.log(e, "ddd");
+      });
+      await uni.openDocument({
+        filePath: res.tempFilePath,
+        success: function (res) {
+          uni.hideToast();
+          console.log("打开文档成功");
         },
       });
-      console.log(this.article.file_path, "this.article.file_path");
-      // this.$goPath("/pages/common/openPdf?links=" + this.article.file_path);
+      uni.hideToast();
+      this.isCanDown = true;
     },
     async getInfomation(id) {
       this.id = id;

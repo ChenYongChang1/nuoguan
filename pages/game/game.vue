@@ -4,23 +4,18 @@
       v-for="(item, index) in games"
       :key="index"
       class="game-item box-shadow"
+      @tap="$goWebViewPath(item.href)"
     >
-      <navigator
-        :url="item.href"
-        open-type="navigate"
-        hover-class="navigator-hover"
-      >
-        <view class="game-cover">
-          <image :src="item.src" mode="scaleToFill" />
+      <view class="game-cover">
+        <image :src="item.src" mode="scaleToFill" />
+      </view>
+      <view class="game-desc">
+        <view class="topic-title">{{ item.name }}</view>
+        <view class="come-game ng-flex ng-align-center">
+          点击进入游戏
+          <image src="/static/imgs/game/come.png" mode="scaleToFill" />
         </view>
-        <view class="game-desc">
-          <view class="topic-title">{{ item.name }}</view>
-          <view class="come-game ng-flex ng-align-center">
-            点击进入游戏
-            <image src="/static/imgs/game/come.png" mode="scaleToFill" />
-          </view>
-        </view>
-      </navigator>
+      </view>
     </view>
   </view>
 </template>
@@ -33,32 +28,32 @@ export default {
         {
           name: "幸运翻牌",
           src: "/static/imgs/game/chaojimali.png",
-          href: `/pages/game/gameInfo?href=https://store.eqxiu.com/gc/detail/1806632`,
+          href: `https://store.eqxiu.com/gc/detail/1806632`,
         },
         {
           name: "牛转乾坤",
           src: "/static/imgs/game/hundouluo.png",
-          href: `/pages/game/gameInfo?href=https://store.eqxiu.com/gc/detail/1694221`,
+          href: `https://store.eqxiu.com/gc/detail/1694221`,
         },
         {
           name: "气动消消乐",
           src: "/static/imgs/game/tanke.png",
-          href: `/pages/game/gameInfo?href=https://store.eqxiu.com/gc/detail/1289284`,
+          href: `https://store.eqxiu.com/gc/detail/1289284`,
         },
         {
           name: "百变扭蛋机",
           src: "/static/imgs/game/pk.png",
-          href: `/pages/game/gameInfo?href=https://store.eqxiu.com/gc/detail/1627635`,
+          href: `https://store.eqxiu.com/gc/detail/1627635`,
         },
         {
           name: "保护诺博士",
           src: "/static/imgs/game/pk.png",
-          href: `/pages/game/gameInfo?href=https://store.eqxiu.com/gc/detail/1614313`,
+          href: `https://store.eqxiu.com/gc/detail/1614313`,
         },
         {
           name: "跳一跳",
           src: "/static/imgs/game/pk.png",
-          href: `/pages/game/gameInfo?href=https://store.eqxiu.com/gc/detail/1316770`,
+          href: `https://store.eqxiu.com/gc/detail/1316770`,
         },
       ],
     };

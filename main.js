@@ -26,24 +26,34 @@ Vue.prototype.$goPath = (url, type = 1, auth = "") => {
   }
 };
 
+Vue.prototype.$goWebViewPath = (url, type = 1, auth = "") => {
+  if (type === 1) {
+    console.log(url, "ddd");
+    uni.navigateTo({ url: `/pages/common/openWebview?links=${url}` });
+  }
+};
+
+const init = async (app) => {
+  const user = await uni.getStorageSync("userInfo");
+
+  if (user) {
+    // 获取缓存的用户信息
+    try {
+      const userInfo = JSON.parse(user);
+      app.$store.commit("user/SET_USER_INFO", userInfo || {});
+      console.log(userInfo, "userInfouserInfo");
+    } catch (e) {}
+  }
+  const identify = await uni.getStorageSync("_IDENTIFY");
+  if (identify) {
+    // 获取缓存的权限
+    app.$store.commit("SET_IDENTIFY", identify || "");
+  }
+};
+
 const app = new Vue({
   store,
   ...App,
 });
-
-const user = uni.getStorageSync("userInfo");
-
-if (user) {
-  // 获取缓存的用户信息
-  try {
-    const userInfo = JSON.parse(user);
-    app.$store.commit("user/SET_USER_INFO", userInfo || {});
-  } catch (e) {}
-}
-const identify = uni.getStorageSync("_IDENTIFY");
-if (identify) {
-  // 获取缓存的权限
-  app.$store.commit("SET_IDENTIFY", identify || "");
-}
-
+init(app);
 app.$mount();

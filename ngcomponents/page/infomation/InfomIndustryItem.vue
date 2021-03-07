@@ -180,7 +180,7 @@ export default {
       // this.$emit("setPraise", { this.articleInfo, index: this.index });
     },
     openPdf(article) {
-      this.$goPath("/pages/common/openPdf?links=" + article.file_path);
+      this.$goPath("/pages/common/openWebview?links=" + article.file_path);
       // uni.downloadFile({
       //   url: article.file_path,
       //   success: function (res) {
