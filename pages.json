@@ -1,108 +1,108 @@
 {
-  "pages": [
-    {
-      "path": "pages/index/index",
-      "style": {
-        "navigationBarTitleText": "首页"
-      }
-    },
-    {
-      "path": "pages/community/community",
-      "style": {
-        "navigationBarTitleText": "逛社区"
-      }
-    },
-    {
-      "path": "pages/community/addArticle",
-      "style": {
-        "navigationBarTitleText": "写文章"
-      }
-    },
-    {
-      "path": "pages/user/usercenter",
-      "style": {
-        "navigationBarTitleText": "我的"
-      }
-    },
-    {
-      "path": "pages/infomation/infomation",
-      "style": {
-        "navigationBarTitleText": "气动宝典"
-      }
-    },
-    {
-      "path": "pages/infomation/infoDetail",
-      "style": {
-        "navigationBarTitleText": "详情"
-      }
-    },
-    {
-      "path": "pages/infomation/infoPdf",
-      "style": {
-        "navigationBarTitleText": "详情"
-      }
-    },
-    {
-      "path": "pages/community/commentsInfo",
-      "style": {
-        "navigationBarTitleText": "论坛 BBS",
-        "backgroundColorTop": "#000000",
-        "enablePullDownRefresh": false
-      }
-    },
-    {
-      "path": "pages/game/game",
-      "style": {
-        "navigationBarTitleText": "玩游戏",
-        "backgroundColorTop": "#000000",
-        "enablePullDownRefresh": false
-      }
-    },
-    {
-      "path": "pages/game/gameInfo",
-      "style": {
-        "navigationBarTitleText": "玩游戏",
-        "backgroundColorTop": "#000000",
-        "enablePullDownRefresh": false
-      }
-    },
-    {
-      "path": "pages/brand/brand",
-      "style": {
-        "navigationBarTitleText": " ",
-        "backgroundColorTop": "#000000",
-        "enablePullDownRefresh": false
-      }
-    },
-    {
-      "path": "pages/player/playerIndex",
-      "style": {
-        "navigationBarTitleText": "点播间",
-        "backgroundColorTop": "#000000",
-        "enablePullDownRefresh": false
-      }
-    },
-    {
-      "path": "pages/common/openWebview",
-      "style": {
-        "navigationBarTitleText": "common",
-        "backgroundColorTop": "#000000",
-        "enablePullDownRefresh": false
-      }
-    },
-    {
-      "path": "pages/login/login",
-      "style": {
-        "navigationBarTitleText": "登陆",
-        "backgroundColorTop": "#000000",
-        "enablePullDownRefresh": false
-      }
-    }
-  ],
-  "globalStyle": {
-    "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "uni-app",
-    "navigationBarBackgroundColor": "#F8F8F8",
-    "backgroundColor": "#F8F8F8"
-  }
+	"pages": [{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "首页"
+			}
+		},
+		{
+			"path": "pages/community/community",
+			"style": {
+				"navigationBarTitleText": "逛社区"
+			}
+		},
+		{
+			"path": "pages/community/addArticle",
+			"style": {
+				"navigationBarTitleText": "写文章"
+			}
+		},
+		{
+			"path": "pages/user/usercenter",
+			"style": {
+				"navigationBarTitleText": "我的"
+			}
+		},
+		{
+			"path": "pages/infomation/infomation",
+			"style": {
+				"navigationBarTitleText": "气动宝典"
+			}
+		},
+		{
+			"path": "pages/infomation/infoDetail",
+			"style": {
+				"navigationBarTitleText": "详情"
+			}
+		},
+		{
+			"path": "pages/infomation/infoPdf",
+			"style": {
+				"navigationBarTitleText": "详情"
+			}
+		},
+		{
+			"path": "pages/community/commentsInfo",
+			"style": {
+				"navigationBarTitleText": "论坛 BBS",
+				"backgroundColorTop": "#000000",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/game/game",
+			"style": {
+				"navigationBarTitleText": "玩游戏",
+				"backgroundColorTop": "#000000",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/game/gameInfo",
+			"style": {
+				"navigationBarTitleText": "玩游戏",
+				"backgroundColorTop": "#000000",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/brand/brand",
+			"style": {
+				"navigationBarTitleText": " ",
+				"backgroundColorTop": "#000000",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/player/playerIndex",
+			"style": {
+				"navigationBarTitleText": "点播间",
+				"backgroundColorTop": "#000000",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/common/openWebview",
+			"style": {
+				"navigationBarTitleText": "common",
+				"backgroundColorTop": "#000000",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/login/login",
+			"style": {
+				"navigationBarTitleText": "登陆",
+				"backgroundColorTop": "#000000",
+				"enablePullDownRefresh": false
+			}
+		}
+	],
+	"globalStyle": {
+		"navigationBarTitleText": "加载中",
+		"enablePullDownRefresh": true,
+		"navigationBarTextStyle": "black",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	}
 }

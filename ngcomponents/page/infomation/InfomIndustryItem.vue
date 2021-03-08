@@ -170,13 +170,14 @@ export default {
       const res = await this.$store.dispatch("infomation/articleThumbsUp", {
         id: this.articleInfo.id,
       });
-      console.log(res, "dd", res.has_praise === 1);
+      // console.log(res, "dd", res.has_praise === 1);
       if (res.has_praise === 1) {
         isLike = true;
       }
       this.articleInfo.isLike = isLike; // !this.articleInfo.isLike;
       // this.$set(this.articleInfo, "isLike", isLike);
-      this.articleInfo.praise_num = this.articleInfo.praise_num + (isLike ? 1 : -1);
+      const num = this.articleInfo.praise_num + (isLike ? 1 : -1)
+      this.articleInfo.praise_num = num > 0 ? num : 0;
       // this.$emit("setPraise", { this.articleInfo, index: this.index });
     },
     openPdf(article) {
