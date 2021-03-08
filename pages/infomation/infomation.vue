@@ -44,8 +44,9 @@ export default {
       );
     },
   },
-  onShow() {
-    this.getArticleGenre();
+  async onShow() {
+    await this.getArticleGenre();
+    uni.stopPullDownRefresh();
   },
   methods: {
     // ...mapActions("infomation", ["getInfomationList"]),

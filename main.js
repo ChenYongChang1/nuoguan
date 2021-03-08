@@ -5,7 +5,9 @@ import store from "./store/index";
 import FooterTabBar from "ngcomponents/layout/FooterTabBar";
 import WxSwiper from "ngcomponents/base/WxSwiper";
 import { strJoin, formatLocalTime } from "./common/util";
+import { isMpWeixin } from "./common/platform";
 import axios from "./axios";
+
 Vue.config.productionTip = false;
 Vue.component("tab-bar", FooterTabBar);
 Vue.component("wx-swiper", WxSwiper);
@@ -15,6 +17,7 @@ Vue.prototype.$store = store;
 Vue.prototype.$strJoin = strJoin;
 Vue.prototype.$formatLocalTime = formatLocalTime;
 Vue.prototype.$axios = axios;
+Vue.prototype.$isMpWeixin = isMpWeixin;
 
 Vue.prototype.$goPath = (url, type = 1, auth = "") => {
   if (type === 1) {

@@ -2,43 +2,51 @@
 	"pages": [{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "首页"
+				"navigationBarTitleText": "首页",
+				"enablePullDownRefresh": false
 			}
 		},
 		{
 			"path": "pages/community/community",
 			"style": {
-				"navigationBarTitleText": "逛社区"
+				"navigationBarTitleText": "逛社区",
+				"enablePullDownRefresh": true
 			}
 		},
 		{
 			"path": "pages/community/addArticle",
 			"style": {
-				"navigationBarTitleText": "写文章"
+				"navigationBarTitleText": "写文章",
+				"enablePullDownRefresh": true
 			}
 		},
 		{
 			"path": "pages/user/usercenter",
 			"style": {
-				"navigationBarTitleText": "我的"
+				"navigationBarTitleText": "我的",
+				"enablePullDownRefresh": false
 			}
 		},
 		{
 			"path": "pages/infomation/infomation",
 			"style": {
-				"navigationBarTitleText": "气动宝典"
+				"navigationBarTitleText": "气动宝典",
+				"enablePullDownRefresh": true
 			}
 		},
 		{
 			"path": "pages/infomation/infoDetail",
 			"style": {
 				"navigationBarTitleText": "详情"
+				,
+				"enablePullDownRefresh": true
 			}
 		},
 		{
 			"path": "pages/infomation/infoPdf",
 			"style": {
-				"navigationBarTitleText": "详情"
+				"navigationBarTitleText": "详情",
+				"enablePullDownRefresh": true
 			}
 		},
 		{
@@ -46,7 +54,7 @@
 			"style": {
 				"navigationBarTitleText": "论坛 BBS",
 				"backgroundColorTop": "#000000",
-				"enablePullDownRefresh": false
+				"enablePullDownRefresh": true
 			}
 		},
 		{
@@ -54,7 +62,7 @@
 			"style": {
 				"navigationBarTitleText": "玩游戏",
 				"backgroundColorTop": "#000000",
-				"enablePullDownRefresh": false
+				"enablePullDownRefresh": true
 			}
 		},
 		{
@@ -100,7 +108,7 @@
 	],
 	"globalStyle": {
 		"navigationBarTitleText": "加载中",
-		"enablePullDownRefresh": true,
+		"enablePullDownRefresh": false,
 		"navigationBarTextStyle": "black",
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#F8F8F8"

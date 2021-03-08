@@ -41,7 +41,7 @@ export default {
     },
   },
   async onShow() {
-    if (!this.userInfo.openId) {
+    if (this.$isMpWeixin && !this.userInfo.openId) {
       this.$goPath("/pages/login/login");
       return;
     }
