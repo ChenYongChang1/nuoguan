@@ -6,7 +6,9 @@
         <view class="auth font-14"> 德力西电气 </view>
         <view class="time">{{ article.created_at }}</view>
       </view>
-      <view class="content" v-html="article.content"></view>
+      <view class="content">
+        <view v-html="content"></view>
+      </view>
     </article>
     <view v-if="false" class="guanggao">
       <view class="gg-title"> 喜欢此内容的人还喜欢 </view>
@@ -55,9 +57,19 @@ export default {
   },
   data() {
     return {
+      url: "",
       id: "",
       article: {},
     };
+  },
+  onShow() {},
+  computed: {
+    content() {
+      return (this.article.content || '').replace(
+        /<img/g,
+        '<img style="max-width:100%;"'
+      );
+    },
   },
   methods: {
     async getInfomation(id) {
@@ -75,6 +87,9 @@ export default {
 .detail {
   width: 100%;
   background: $bodyBg;
+  image {
+    width: 100%;
+  }
   .detail-article {
     width: 100%;
     background: white;
@@ -137,6 +152,9 @@ export default {
   .content {
     width: 100%;
     margin-bottom: 20rpx;
+    img {
+      max-width: 100%;
+    }
   }
 }
 </style>

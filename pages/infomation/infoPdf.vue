@@ -20,9 +20,12 @@
 
 <script>
 export default {
-  onLoad(options) {
+  async onLoad(options) {
     const { id } = options;
-    this.getInfomation(id);
+    await this.getInfomation(id);
+    // if (this.article.use_type === 1) {
+    //   this.openPdf();
+    // }
   },
   data() {
     return {
@@ -30,6 +33,9 @@ export default {
       isCanDown: true,
       article: {},
     };
+  },
+  onShow() {
+    console.log(this.article.use_type, "this.article.use_type");
   },
   methods: {
     async openPdf() {
@@ -40,7 +46,7 @@ export default {
       uni.showToast({
         icon: "none",
         mask: true,
-        title: "打开文件。。。", //保存路径
+        title: "打开文件...", //保存路径
         duration: 5000,
       });
       const [, res] = await uni.downloadFile({

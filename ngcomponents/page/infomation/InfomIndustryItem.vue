@@ -4,7 +4,7 @@
       <view class="infomation-box">
         <view
           class="infomation-box-title ellipsis-row-1"
-          @tap="$goPath(articleUrl)"
+          @tap="lookDetail(articleUrl)"
         >
           {{ articleInfo.title }}
         </view>
@@ -57,13 +57,13 @@
       </view>
     </view>
     <view v-if="type === 2" class="info-row-pdf">
-      <view class="info-pdf-item" @tap="$goPath(articlePdfUrl)">
+      <view class="info-pdf-item" @tap="lookDetail(articlePdfUrl)">
         <image
           class="info-pdf-img"
           src="/static/imgs/infomation/pdf.png"
         ></image>
         <view class="pdf-desc">
-          <view class="pdf-title ng-text-center" @tap="$goPath(articlePdfUrl)">
+          <view class="pdf-title ng-text-center">
             {{ articleInfo.title }}
           </view>
           <view class="time ng-text-center font-10">
@@ -84,7 +84,7 @@
       ></infomation-item>
     </view>
     <view v-else-if="type === 0" class="info-row-word">
-      <view class="word-title ellipsis-row-1" @tap="$goPath(articleUrl)">
+      <view class="word-title ellipsis-row-1" @tap="lookDetail(articleUrl)">
         {{ articleInfo.title }}
       </view>
       <view class="word-desc ellipsis-row-3">
@@ -165,6 +165,33 @@ export default {
     this.articleInfo = JSON.parse(JSON.stringify(this.article));
   },
   methods: {
+    async openPdf() {
+      uni.showToast({
+        icon: "none",
+        mask: true,
+        title: "loading...", //保存路径
+        duration: 5000,
+      });
+      const [, res] = await uni.downloadFile({
+        url: this.article.file_path,
+      });
+      await uni.openDocument({
+        filePath: res.tempFilePath,
+        success: function (res) {
+          uni.hideToast();
+          console.log("打开文档成功");
+        },
+      });
+      uni.hideToast();
+    },
+
+    async lookDetail(url) {
+      if (this.article.use_type === 1) {
+        this.openPdf();
+      } else {
+        this.$goPath(url);
+      }
+    },
     async likeArticle() {
       let isLike = false;
       const res = await this.$store.dispatch("infomation/articleThumbsUp", {
@@ -176,21 +203,21 @@ export default {
       }
       this.articleInfo.isLike = isLike; // !this.articleInfo.isLike;
       // this.$set(this.articleInfo, "isLike", isLike);
-      const num = this.articleInfo.praise_num + (isLike ? 1 : -1)
+      const num = this.articleInfo.praise_num + (isLike ? 1 : -1);
       this.articleInfo.praise_num = num > 0 ? num : 0;
       // this.$emit("setPraise", { this.articleInfo, index: this.index });
     },
-    openPdf(article) {
-      this.$goPath("/pages/common/openWebview?links=" + article.file_path);
-      // uni.downloadFile({
-      //   url: article.file_path,
-      //   success: function (res) {
-      //     const filePath = res.tempFilePath;
-      //     uni.openDocument({ filePath });
-      //   },
-      // });
-      // uni.openDocument({ filePath: article.file_path + "?v=41927" });
-    },
+    // openPdf(article) {
+    //   this.$goPath("/pages/common/openWebview?links=" + article.file_path);
+    //   // uni.downloadFile({
+    //   //   url: article.file_path,
+    //   //   success: function (res) {
+    //   //     const filePath = res.tempFilePath;
+    //   //     uni.openDocument({ filePath });
+    //   //   },
+    //   // });
+    //   // uni.openDocument({ filePath: article.file_path + "?v=41927" });
+    // },
   },
 };
 </script>
