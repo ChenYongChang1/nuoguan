@@ -53,7 +53,8 @@
 export default {
   onLoad(options) {
     const { id } = options;
-    this.getInfomation(id);
+    this.id = id
+    this.getInfomation();
   },
   data() {
     return {
@@ -63,6 +64,10 @@ export default {
     };
   },
   onShow() {},
+  async onPullDownRefresh(){
+    await this.getInfomation();
+    uni.stopPullDownRefresh();
+  },
   computed: {
     content() {
       return (this.article.content || '').replace(
@@ -72,10 +77,9 @@ export default {
     },
   },
   methods: {
-    async getInfomation(id) {
-      this.id = id;
+    async getInfomation() {
       const res = await this.$store.dispatch("infomation/getInfomationDetail", {
-        id,
+        id: this.id,
       });
       this.article = res.detail;
     },

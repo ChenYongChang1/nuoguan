@@ -22,7 +22,8 @@
 export default {
   async onLoad(options) {
     const { id } = options;
-    await this.getInfomation(id);
+    this.id = id
+    await this.getInfomation();
     // if (this.article.use_type === 1) {
     //   this.openPdf();
     // }
@@ -34,8 +35,10 @@ export default {
       article: {},
     };
   },
-  onShow() {
-    console.log(this.article.use_type, "this.article.use_type");
+  onShow() {},
+  async onPullDownRefresh(){
+    await this.getInfomation();
+    uni.stopPullDownRefresh();
   },
   methods: {
     async openPdf() {
@@ -62,10 +65,9 @@ export default {
       uni.hideToast();
       this.isCanDown = true;
     },
-    async getInfomation(id) {
-      this.id = id;
+    async getInfomation() {
       const res = await this.$store.dispatch("infomation/getInfomationDetail", {
-        id,
+        id: this.id,
       });
       this.article = res.detail;
     },

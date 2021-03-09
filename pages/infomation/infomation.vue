@@ -46,6 +46,9 @@ export default {
   },
   async onShow() {
     await this.getArticleGenre();
+  },
+  async onPullDownRefresh(){
+    await this.getInfoMation();
     uni.stopPullDownRefresh();
   },
   methods: {
