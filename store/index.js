@@ -2,6 +2,8 @@ import Vue from "vue";
 import Vuex from "vuex";
 import axios from "axios";
 import infomation from "./infomation";
+import community from "./community";
+import base from "./base";
 import user from "./user";
 Vue.use(Vuex);
 
@@ -9,6 +11,8 @@ const store = new Vuex.Store({
   modules: {
     user,
     infomation,
+    community,
+    base,
   },
   state: {
     identify: "",
